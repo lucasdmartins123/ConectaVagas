@@ -78,14 +78,12 @@ export default function Register() {
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
             <div className="pt-10">
-              <Link to="/home">
-                <button
-                  type="submit"
-                  className="py-5 px-12 rounded-xl bg-cyan-400 text-xl font-serif font-semibold text-black uppercase"
-                >
-                  Cadastrar
-                </button>
-              </Link>
+              <button
+                type={"submit"}
+                className="py-5 px-12 rounded-xl bg-cyan-400 text-xl font-serif font-semibold text-black uppercase"
+              >
+                Cadastrar
+              </button>
               <div className="pt-2">
                 <span className="pr-1">Ja possui conta?</span>
                 <Link className="text-azul-100" to="/login">
