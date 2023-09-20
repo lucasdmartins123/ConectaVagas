@@ -32,9 +32,9 @@ export default function Register() {
           <div className="flex flex-col justify-center items-center">
             <label className="pb-3 text-xl font-serif font-bold">Tipo:</label>
             <select
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 text-lg font-serif font-bold text-black"
               value={is_company}
-              onChange={(e) => setIs_company(e.target.value)}
+              onChange={(e) => setIs_company(e.target.value === "true")}
             >
               <option value="true">Empresa</option>
               <option value="false">Usuário</option>
@@ -48,7 +48,7 @@ export default function Register() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
               placeholder="Digite seu nome"
             ></input>
           </div>
@@ -60,7 +60,7 @@ export default function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              className="w-1/2 p-2  shadow-md shadow-black border rounded-md"
+              className="w-1/2 p-2  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
               placeholder="Digite seu email"
             ></input>
           </div>
@@ -72,7 +72,7 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
               placeholder="Digite sua senha"
             ></input>
           </div>
@@ -80,7 +80,7 @@ export default function Register() {
             <div className="pt-10">
               <button
                 type={"submit"}
-                className="py-5 px-12 rounded-xl bg-cyan-400 text-xl font-serif font-semibold text-black uppercase"
+                className="py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4"
               >
                 Cadastrar
               </button>

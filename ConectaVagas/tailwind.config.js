@@ -15,5 +15,11 @@ export default {
       },
     },
   },
+  variants: {
+    extend: {
+      ringColor: ["focus"],
+      ringWidth: ["focus"],
+    },
+  },
   plugins: [],
 };

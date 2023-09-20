@@ -31,8 +31,8 @@ export default function Login() {
             <label className="pb-3 text-xl font-serif font-bold">Email:</label>
             <input
               type="email"
-              className="w-1/2 p-2  shadow-md shadow-black border rounded-md"
-              placeholder="Digite seu email"
+              className="w-1/2 p-2  shadow-md  shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4  "
+              placeholder="Digite seu email "
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             ></input>
@@ -43,7 +43,7 @@ export default function Login() {
             </label>
             <input
               type="password"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md"
+              className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
               placeholder="Digite sua senha"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
@@ -51,15 +51,17 @@ export default function Login() {
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
             <div className="pt-14">
-              <button
-                type={"submit"}
-                className="py-5 px-12 rounded-xl bg-cyan-400 text-xl font-serif font-semibold text-black uppercase"
-              >
-                Entrar
-              </button>
+              <Link className="text-azul-100 " to="/home">
+                <button
+                  type={"submit"}
+                  className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4"
+                >
+                  Entrar
+                </button>
+              </Link>
               <div className="pt-2">
                 <span className="pr-1">Nao possui conta?</span>
-                <Link className="text-azul-100" to="/register">
+                <Link className="text-azul-100 " to="/register">
                   Criar conta
                 </Link>
               </div>

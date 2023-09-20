@@ -17,14 +17,14 @@ export default function Begin() {
           <div className="pb-10 flex flex-col items-center justify-center">
             <div className="pt-14">
               <Link to="/login">
-                <button className="py-5 px-12 rounded-xl bg-cyan-400 text-xl font-serif font-semibold text-black uppercase">
+                <button className="py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4">
                   Acessar Conta
                 </button>
               </Link>
             </div>
             <div className="pt-9">
               <Link to="/register">
-                <button className="py-5 px-16 rounded-xl bg-cyan-400 text-xl font-serif font-semibold text-black uppercase">
+                <button className="py-5 px-16 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4">
                   Criar Conta
                 </button>
               </Link>
