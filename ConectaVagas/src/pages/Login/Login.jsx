@@ -51,14 +51,13 @@ export default function Login() {
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
             <div className="pt-14">
-              <Link className="text-azul-100 " to="/home">
-                <button
-                  type={"submit"}
-                  className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4"
-                >
-                  Entrar
-                </button>
-              </Link>
+              <button
+                type={"submit"}
+                className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4"
+              >
+                Entrar
+              </button>
+
               <div className="pt-2">
                 <span className="pr-1">Nao possui conta?</span>
                 <Link className="text-azul-100 " to="/register">

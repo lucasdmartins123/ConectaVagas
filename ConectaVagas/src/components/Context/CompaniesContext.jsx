@@ -42,19 +42,6 @@ const CompaniesProvider = ({ children }) => {
   async function companiesRegister(companiesData) {
     setDbLoading(true);
     try {
-      await api.post("companies", bookData, headers);
-      loadCompanies();
-      alert("Empresa adicionada");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setDbLoading(false);
-    }
-  }
-
-  async function companiesRegister(companiesData) {
-    setDbLoading(true);
-    try {
       await api.post("companies", companiesData, headers);
       loadCompanies();
       alert("Empresa adicionada");

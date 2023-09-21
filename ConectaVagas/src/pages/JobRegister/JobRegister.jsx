@@ -7,6 +7,7 @@ export default function JobRegister() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const [filters, setFilters] = useState("");
   const [salary, setSalary] = useState("");
   const { companiesRegister, vacanciesRegister, dbLoading } =
     useContext(CompaniesContext);
@@ -23,7 +24,7 @@ export default function JobRegister() {
       filters,
       salary,
     };
-    companiesRegister(newVacancie);
+    vacanciesRegister(newVacancie);
   }
 
   return (
@@ -43,7 +44,7 @@ export default function JobRegister() {
             <input
               type="text"
               className="w-1/2 p-2  shadow-md  shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4  "
-              placeholder="Digite seu email "
+              placeholder="Digite um titulo "
               onChange={(e) => setTitle(e.target.value)}
               value={title}
             ></input>
@@ -67,7 +68,7 @@ export default function JobRegister() {
             <input
               type="text"
               className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
-              placeholder="Digite uma localidade"
+              placeholder="Digite uma cidade"
               onChange={(e) => setLocation(e.target.value)}
               value={location}
             ></input>
@@ -76,7 +77,13 @@ export default function JobRegister() {
             <label className="pt-6 pb-3 text-xl font-serif font-bold">
               tags:
             </label>
-            <button className="py-5 px-12 rounded-xl bg-azul-100">Tags</button>
+            <input
+              type="text"
+              className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
+              placeholder="Digite uma cidade"
+              onChange={(e) => setFilters(e.target.value)}
+              value={filters}
+            ></input>
           </div>
           <div className="flex flex-col justify-center items-center">
             <label className="pt-6 pb-3 text-xl font-serif font-bold">
@@ -86,8 +93,8 @@ export default function JobRegister() {
               type="text"
               className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
               placeholder="Digite uma descrição"
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
+              onChange={(e) => setSalary(e.target.value)}
+              value={salary}
             ></input>
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
