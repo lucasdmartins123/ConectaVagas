@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 
 import { AuthContext } from "../../components/Context/AuthContext";
+import Header from "../../components/Header/Header";
 
 export default function Home() {
   const { companiesList, vacanciesList } = useContext(CompaniesContext);
   const { userData } = useContext(AuthContext);
   return (
     <>
+      <Header />
       <div className="bg-azul-100 opacity-50  flex flex-col items-center h-screen">
         <h1 className="text-3xl font-serif font-bold self-center pt-10">
           Oportunidades de Vagas

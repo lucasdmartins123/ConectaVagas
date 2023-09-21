@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 
 import { AuthContext } from "../../components/Context/AuthContext";
+import Header from "../../components/Header/Header";
 
 export default function CompaniesList() {
   const { companiesList } = useContext(CompaniesContext);
 
   return (
     <>
+      <Header />
       <div className="bg-azul-100 opacity-50  flex flex-col justify-center items-center">
         <h1 className="text-3xl font-serif font-bold self-center pt-10">
           Listagem de Empresas

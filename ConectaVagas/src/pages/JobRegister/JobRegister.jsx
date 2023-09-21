@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/Context/AuthContext";
 import { useContext, useState } from "react";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
+import Header from "../../components/Header/Header";
 
 export default function JobRegister() {
   const [title, setTitle] = useState("");
@@ -29,6 +30,7 @@ export default function JobRegister() {
 
   return (
     <>
+      <Header />
       <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center">
         <form
           className="w-1/2 h-5/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col "
