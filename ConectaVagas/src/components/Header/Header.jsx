@@ -30,7 +30,7 @@ export default function Header() {
           </IconContext.Provider>
           <input
             className="pl-7 w-72"
-            placeholder="Insira o nome da vaga ou empresa aqui"
+            placeholder="Insira o nome da vaga ou empresa"
           />
         </div>
 

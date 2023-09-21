@@ -20,7 +20,7 @@ export default function CompaniesList() {
         <div className="pt-2 flex flex-col ">
           {companiesList.map((company, index) => (
             <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
-              <div className="bg-white rounded-xl text-base font-serif font-bold w-5/6 px-20">
+              <div className="bg-white rounded-xl text-base font-serif font-bold w-5/6 px-20 ">
                 <p> Cnpj: {company.cnpj}</p>
                 <p> Nome: {company.nomeFantasia}</p>
                 <p> Estado: {company.uf}</p>
@@ -28,6 +28,11 @@ export default function CompaniesList() {
             </div>
           ))}
         </div>
+        <Link to="/jobregister">
+          <span className="text-3xl font-serif font-bold self-center pt-20 ">
+            Cadastrar Vaga
+          </span>
+        </Link>
       </div>
     </>
   );
