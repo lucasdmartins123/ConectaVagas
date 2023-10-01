@@ -25,8 +25,14 @@ function App() {
         path="/home"
         element={authenticated ? <Home /> : <Navigate to="/" />}
       />
-      <Route path="/jobRegister" element={<JobRegister />} />
-      <Route path="/companiesList" element={<CompaniesList />} />
+      <Route
+        path="/jobRegister"
+        element={authenticated ? <JobRegister /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/companiesList"
+        element={authenticated ? <CompaniesList /> : <Navigate to="/" />}
+      />
     </Routes>
   );
 }

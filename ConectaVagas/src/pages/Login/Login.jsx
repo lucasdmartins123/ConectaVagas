@@ -19,7 +19,7 @@ export default function Login() {
     <>
       <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center">
         <form
-          className="w-1/3 h-1/2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col "
+          className="w-1/3 h-1/2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-4/6"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
@@ -31,7 +31,7 @@ export default function Login() {
             <label className="pb-3 text-xl font-serif font-bold">Email:</label>
             <input
               type="email"
-              className="w-1/2 p-2  shadow-md  shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4  "
+              className="w-1/2 p-2  shadow-md  shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6 "
               placeholder="Digite seu email "
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -43,17 +43,17 @@ export default function Login() {
             </label>
             <input
               type="password"
-              className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
+              className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite sua senha"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             ></input>
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
-            <div className="pt-14">
+            <div className="pt-14 max-sm:pt-7">
               <button
                 type={"submit"}
-                className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4"
+                className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4 max-sm:ml-3"
               >
                 Entrar
               </button>

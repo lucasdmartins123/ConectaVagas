@@ -16,7 +16,7 @@ export default function Header() {
           <Link to="/home">ConectaVagas</Link>
         </div>
       </div>
-      <div className="flex space-x-24">
+      <div className="flex space-x-20">
         <div className="relative w-64">
           <IconContext.Provider
             value={{
@@ -42,7 +42,12 @@ export default function Header() {
           </div>
         </IconContext.Provider>
         <IconContext.Provider value={{ size: "1.5em" }}>
-          <div onClick={handleLogout}>
+          <div className="cursor-pointer">
+            <BsFilter />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "1.5em" }}>
+          <div className="cursor-pointer" onClick={handleLogout}>
             <FiLogOut />
           </div>
         </IconContext.Provider>

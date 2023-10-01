@@ -19,9 +19,9 @@ export default function Register() {
   }
   return (
     <>
-      <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center">
+      <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center max-sm:p-4">
         <form
-          className="w-1/3 h-4/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col "
+          className="w-1/3 h-4/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-full "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
@@ -32,7 +32,7 @@ export default function Register() {
           <div className="flex flex-col justify-center items-center">
             <label className="pb-3 text-xl font-serif font-bold">Tipo:</label>
             <select
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 text-lg font-serif font-bold text-black"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 text-lg font-serif font-bold text-black max-sm:w-5/6"
               value={is_company}
               onChange={(e) => setIs_company(e.target.value === "true")}
             >
@@ -48,7 +48,7 @@ export default function Register() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite seu nome"
             ></input>
           </div>
@@ -60,7 +60,7 @@ export default function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              className="w-1/2 p-2  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+              className="w-1/2 p-2  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite seu email"
             ></input>
           </div>
@@ -72,7 +72,7 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite sua senha"
             ></input>
           </div>
@@ -80,7 +80,7 @@ export default function Register() {
             <div className="pt-10">
               <button
                 type={"submit"}
-                className="py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4"
+                className="py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
               >
                 Cadastrar
               </button>

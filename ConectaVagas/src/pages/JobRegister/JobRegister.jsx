@@ -3,6 +3,7 @@ import { AuthContext } from "../../components/Context/AuthContext";
 import { useContext, useState } from "react";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
+import Tags from "../../components/Tags/Tags";
 
 export default function JobRegister() {
   const [title, setTitle] = useState("");
@@ -10,14 +11,26 @@ export default function JobRegister() {
   const [location, setLocation] = useState("");
   const [filters, setFilters] = useState("");
   const [salary, setSalary] = useState("");
-  const { companiesRegister, vacanciesRegister, dbLoading } =
-    useContext(CompaniesContext);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const { vacanciesRegister } = useContext(CompaniesContext);
+
+  const toggleTagSelection = (tag) => {
+    if (selectedTags.includes(tag)) {
+      setSelectedTags((prevTags) => prevTags.filter((t) => t !== tag));
+    } else {
+      setSelectedTags((prevTags) => [...prevTags, tag]);
+    }
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!title || !description || !location || !salary) {
       alert("preencha todos os campos");
     }
+    const filtersObject = {};
+    selectedTags.forEach((tag) => {
+      filtersObject[tag] = true;
+    });
     const newVacancie = {
       title,
       description,
@@ -77,12 +90,12 @@ export default function JobRegister() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <label className="pt-6 pb-3 text-xl font-serif font-bold">
-              tags:
+              Tags:
             </label>
             <input
               type="text"
               className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
-              placeholder="Digite uma cidade"
+              placeholder="Digite uma tag"
               onChange={(e) => setFilters(e.target.value)}
               value={filters}
             ></input>
@@ -94,7 +107,7 @@ export default function JobRegister() {
             <input
               type="text"
               className="w-1/2 p-2 shadow-md  shadow-black border rounded-md ring-2 focus:ring-2 ring-azul-100 focus:ring-azul-100 hover:ring-4"
-              placeholder="Digite uma descrição"
+              placeholder="Digite o salário"
               onChange={(e) => setSalary(e.target.value)}
               value={salary}
             ></input>

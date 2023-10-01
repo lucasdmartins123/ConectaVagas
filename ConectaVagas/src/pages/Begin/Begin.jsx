@@ -5,12 +5,12 @@ export default function Begin() {
   return (
     <>
       <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center">
-        <form className="w-1/3 h-1/2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col ">
-          <div className="flex flex-col">
-            <h1 className="text-3xl font-serif font-bold text-black self-center pb-5 pt-10">
+        <form className="w-1/3 h-1/2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-4/6">
+          <div className="flex flex-col ">
+            <h1 className="text-3xl font-serif font-bold text-black self-center pb-5 pt-10 max-sm:pl-12 ">
               Bem-Vindo ao ConectaVagas
             </h1>
-            <span className="text-xl font-serif text-black self-center">
+            <span className="text-xl font-serif text-black self-center max-sm:pl-6">
               Encontre aqui a vaga dos seus sonhos
             </span>
           </div>
