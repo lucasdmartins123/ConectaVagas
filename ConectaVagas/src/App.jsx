@@ -9,6 +9,8 @@ import RegisterCompany from "./pages/RegisterCompany/RegisterCompany.jsx";
 import RegisterPerson from "./pages/RegisterPerson/RegisterPerson.jsx";
 import CompaniesList from "./pages/CompaniesList/CompaniesList.jsx";
 import Profile from "./pages/Perfil/Perfil.jsx";
+import JobEdit from "./pages/JobEdit/JobEdit.jsx";
+import VacancieDetails from "./pages/VacancieDetails/VacancieDetails.jsx";
 
 function App() {
   const { authenticated, loading } = useContext(AuthContext);
@@ -39,6 +41,14 @@ function App() {
       <Route
         path="/companiesList"
         element={authenticated ? <CompaniesList /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/JobEdit/:id"
+        element={authenticated ? <JobEdit /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/vacancieDetails/:id"
+        element={authenticated ? <VacancieDetails /> : <Navigate to="/" />}
       />
     </Routes>
   );

@@ -8,6 +8,7 @@ const CompaniesContext = createContext();
 const CompaniesProvider = ({ children }) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [vacanciesList, setVacanciesList] = useState([]);
+  const [vacancieDetails, setVacancieDetails] = useState({});
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
   const navigate = useNavigate();
@@ -52,6 +53,15 @@ const CompaniesProvider = ({ children }) => {
     }
   }
 
+  async function LoadVacanciesDetails(vacancieId) {
+    try {
+      const { data } = await api.get(`myvacancies/${vacancieId}`, headers);
+      setVacancieDetails(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function vacanciesRegister(vacanciesData) {
     setDbLoading(true);
     try {
@@ -89,6 +99,8 @@ const CompaniesProvider = ({ children }) => {
         companiesRegister,
         vacanciesRegister,
         vancanciesEdit,
+        LoadVacanciesDetails,
+        vacancieDetails,
       }}
     >
       {children}

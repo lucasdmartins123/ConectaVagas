@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../components/Context/AuthContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
 import Tags from "../../components/Tags/Tags";
@@ -158,7 +158,7 @@ export default function JobEdit() {
                 type={"submit"}
                 className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4"
               >
-                Cadastrar
+                Editar
               </button>
             </div>
           </div>

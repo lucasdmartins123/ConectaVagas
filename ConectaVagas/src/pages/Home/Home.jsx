@@ -17,14 +17,37 @@ export default function Home() {
         <h1 className="text-3xl font-serif font-bold self-center pt-10">
           Oportunidades de Vagas
         </h1>
+
         <div className="pt-2 flex flex-col ">
           {vacanciesList.map((vacancy, index) => (
             <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
-              <div className="bg-white rounded-xl text-base font-serif font-bold ">
-                <p className="px-20"> Titulo: {vacancy.title}</p>
-                <p className="px-20"> Descrição: {vacancy.description}</p>
-                <p className="px-20"> Localização: {vacancy.location}</p>
-                <p className="px-20"> Salário: {vacancy.salary}</p>
+              <Link to={`/vacancieDetails/${vacancy.ID}`}>
+                <div className="bg-white rounded-xl text-base font-serif font-bold ">
+                  <p className="px-20"> Titulo: {vacancy.title}</p>
+                  <p className="px-20"> Descrição: {vacancy.description}</p>
+                  <p className="px-20"> Localização: {vacancy.location}</p>
+                  <p className="px-20"> Salário: {vacancy.salary}</p>
+                  <p className="px-20">
+                    {" "}
+                    Data de publicação: {vacancy.postDate}
+                  </p>
+                </div>
+              </Link>
+              <div>
+                {userData.company ? (
+                  <div className="flex justify-between">
+                    <Link to={`/JobEdit/${vacancy.ID}`}>
+                      <span className="text-sm font-serif font-bold self-center text-black-700 ">
+                        Editar
+                      </span>
+                    </Link>
+                    <span className="text-sm font-serif font-bold self-center text-red-600 ">
+                      Deletar
+                    </span>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           ))}
