@@ -8,7 +8,7 @@ import JobRegister from "./pages/JobRegister/JobRegister.jsx";
 import RegisterCompany from "./pages/RegisterCompany/RegisterCompany.jsx";
 import RegisterPerson from "./pages/RegisterPerson/RegisterPerson.jsx";
 import CompaniesList from "./pages/CompaniesList/CompaniesList.jsx";
-import Profile from "./pages/Profile/profile.jsx";
+import Profile from "./pages/Perfil/Perfil.jsx";
 
 function App() {
   const { authenticated, loading } = useContext(AuthContext);
