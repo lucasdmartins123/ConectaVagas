@@ -60,7 +60,7 @@ export default function Login() {
 
               <div className="pt-2">
                 <span className="pr-1">Nao possui conta?</span>
-                <Link className="text-azul-100 " to="/register">
+                <Link className="text-azul-100 " to="/registerCompany">
                   Criar conta
                 </Link>
               </div>

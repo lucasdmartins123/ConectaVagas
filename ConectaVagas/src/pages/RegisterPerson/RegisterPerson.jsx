@@ -2,44 +2,36 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/Context/AuthContext";
 
-export default function Register() {
-  const [is_company, setIs_company] = useState(true);
+export default function RegisterPerson() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [user_type, setUser_type] = useState(false);
+  const [cpf, setCpf] = useState("");
+  const [surname, setSurname] = useState("");
 
-  const { handleRegister } = useContext(AuthContext);
+  const { handleRegisterPerson } = useContext(AuthContext);
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!email || !password || !name) {
+    if (!email || !password || !name || !cpf || !surname) {
       return;
     }
-    handleRegister({ name, email, password, is_company });
+    handleRegisterPerson({ name, email, password, user_type, cpf, surname });
   }
   return (
     <>
       <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center max-sm:p-4">
         <form
-          className="w-1/3 h-4/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-full "
+          className="w-1/3 h-5/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-full "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
             <h1 className="text-3xl font-serif font-bold text-black self-center pb-8 pt-5">
-              Cadastro
+              Cadastro de Usuário
             </h1>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pb-3 text-xl font-serif font-bold">Tipo:</label>
-            <select
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 text-lg font-serif font-bold text-black max-sm:w-5/6"
-              value={is_company}
-              onChange={(e) => setIs_company(e.target.value === "true")}
-            >
-              <option value="true">Empresa</option>
-              <option value="false">Usuário</option>
-            </select>
-          </div>
+
           <div className="flex flex-col justify-center items-center">
             <label className="pb-3 pt-6 text-xl font-serif font-bold">
               Nome:
@@ -72,6 +64,30 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              placeholder="Digite sua senha"
+            ></input>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+              Cpf:
+            </label>
+            <input
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+              type="text"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              placeholder="Digite seu cpf"
+            ></input>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+              Sobrenome:
+            </label>
+            <input
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              type="text"
               className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite sua senha"
             ></input>

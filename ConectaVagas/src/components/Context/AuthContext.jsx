@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
         name: data.name,
         email: data.email,
         company: data.is_company,
+        id: data.id,
       };
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -29,9 +30,19 @@ const AuthProvider = ({ children }) => {
     }
   }
 
-  async function handleRegister(userData) {
+  async function handleRegisterCompany(userData) {
     try {
-      await api.post("/register", userData);
+      await api.post("/registerCompany", userData);
+      alert("cadastrado com sucesso");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleRegisterPerson(userData) {
+    try {
+      await api.post("/registerPerson", userData);
       alert("cadastrado com sucesso");
       navigate("/login");
     } catch (error) {
@@ -63,7 +74,8 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         handleLogin,
-        handleRegister,
+        handleRegisterCompany,
+        handleRegisterPerson,
         handleLogout,
         authenticated,
         loading,

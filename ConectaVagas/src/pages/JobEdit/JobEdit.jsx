@@ -5,7 +5,7 @@ import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
 import Tags from "../../components/Tags/Tags";
 
-export default function JobRegister() {
+export default function JobEdit() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -13,30 +13,40 @@ export default function JobRegister() {
   const [salary, setSalary] = useState("");
   const [postDate, setPostDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [internshipType, setinternshipType] = useState("");
-  const [requirements, setRequirements] = useState("");
-  const [benefits, setBenefits] = useState("");
-  const { vacanciesRegister } = useContext(CompaniesContext);
+  const { id } = useParams();
+  const { vacanciesEdit, vacanciesDetails, loadVacanciesDetails } =
+    useContext(CompaniesContext);
   const { userData } = useContext(AuthContext);
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!title || !description || !location || !salary) {
-      alert("preencha todos os campos");
+    if (!title) {
+      setTitle(vacanciesDetails.title);
     }
 
-    const newVacancie = {
+    const vacancieUpdate = {
+      id,
       title,
       description,
-      location,
-      filters,
-      salary,
-      postDate,
-      endDate,
-      userId: userData.id,
     };
-    vacanciesRegister(newVacancie);
+    vacanciesEdit(vacancieUpdate);
   }
+
+  useEffect(() => {
+    if (vacanciesDetails.title) {
+      setTitle(vacanciesDetails.title);
+      setDescription(vacanciesDetails.description);
+      setLocation(vacanciesDetails.location);
+      setFilters(vacanciesDetails.filters);
+      setSalary(vacanciesDetails.salary);
+      setPostDate(vacanciesDetails.postDate);
+      setEndDate(vacanciesDetails.endDate);
+    }
+  }, [vacanciesDetails]);
+
+  useEffect(() => {
+    loadVacanciesDetails(id);
+  }, [id]);
 
   return (
     <>
@@ -48,7 +58,7 @@ export default function JobRegister() {
         >
           <div className="flex flex-col">
             <h1 className="text-3xl font-serif font-bold text-black self-center pb-4 pt-5">
-              Cadastre sua Vaga
+              Editar vaga
             </h1>
           </div>
           <div className="flex flex-col">

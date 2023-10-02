@@ -36,7 +36,7 @@ export default function Header() {
 
         <IconContext.Provider value={{ size: "1.5em", color: "black" }}>
           <div>
-            <Link to="/companiesList">
+            <Link to="/profile">
               <CgProfile />
             </Link>
           </div>

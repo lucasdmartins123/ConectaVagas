@@ -30,7 +30,7 @@ const CompaniesProvider = ({ children }) => {
 
   async function loadVacancies() {
     try {
-      const { data } = await api.get("/vacancies", headers);
+      const { data } = await api.get("/myvacancies", headers);
       setVacanciesList(data.content);
     } catch (error) {
       console.log(error);
@@ -55,13 +55,23 @@ const CompaniesProvider = ({ children }) => {
   async function vacanciesRegister(vacanciesData) {
     setDbLoading(true);
     try {
-      await api.post("vacancies", vacanciesData, headers);
-      loadCompanies();
+      await api.post("myvacancies", vacanciesData, headers);
+      loadVacancies();
       alert("Vaga adicionada");
     } catch (error) {
       console.log(error);
     } finally {
       setDbLoading(false);
+    }
+  }
+
+  async function vancanciesEdit(vacanciesData) {
+    try {
+      await api.put(`myvacancies`, vacanciesData, headers);
+      loadBooks();
+      alert("Vaga atualizada");
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -78,6 +88,7 @@ const CompaniesProvider = ({ children }) => {
         vacanciesList,
         companiesRegister,
         vacanciesRegister,
+        vancanciesEdit,
       }}
     >
       {children}

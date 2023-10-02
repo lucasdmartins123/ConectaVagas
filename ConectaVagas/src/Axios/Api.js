@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://164.92.105.156/",
+  baseURL: "https://conectavagas.up.railway.app/",
 });
