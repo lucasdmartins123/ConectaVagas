@@ -35,6 +35,7 @@ export default function Begin() {
                   Criar Usuário
                 </button>
               </Link>
+              <></>
             </div>
           </div>
         </form>
