@@ -14,14 +14,14 @@ export default function JobEdit() {
   const [postDate, setPostDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const { id } = useParams();
-  const { vacanciesEdit, vacanciesDetails, loadVacanciesDetails } =
+  const { vacanciesEdit, vacancieDetails, LoadVacanciesDetails } =
     useContext(CompaniesContext);
   const { userData } = useContext(AuthContext);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!title) {
-      setTitle(vacanciesDetails.title);
+      setTitle(vacancieDetails.title);
     }
 
     const vacancieUpdate = {
@@ -33,19 +33,19 @@ export default function JobEdit() {
   }
 
   useEffect(() => {
-    if (vacanciesDetails.title) {
-      setTitle(vacanciesDetails.title);
-      setDescription(vacanciesDetails.description);
-      setLocation(vacanciesDetails.location);
-      setFilters(vacanciesDetails.filters);
-      setSalary(vacanciesDetails.salary);
-      setPostDate(vacanciesDetails.postDate);
-      setEndDate(vacanciesDetails.endDate);
+    if (vacancieDetails.title) {
+      setTitle(vacancieDetails.title);
+      setDescription(vacancieDetails.description);
+      setLocation(vacancieDetails.location);
+      setFilters(vacancieDetails.filters);
+      setSalary(vacancieDetails.salary);
+      setPostDate(vacancieDetails.postDate);
+      setEndDate(vacancieDetails.endDate);
     }
-  }, [vacanciesDetails]);
+  }, [vacancieDetails]);
 
   useEffect(() => {
-    loadVacanciesDetails(id);
+    LoadVacanciesDetails(id);
   }, [id]);
 
   return (

@@ -15,17 +15,6 @@ export default function Profile() {
         <h1 className="text-3xl font-serif font-bold self-center pt-10">
           Minhas Vagas:
         </h1>
-        <div className="flex">
-          {userData.company ? (
-            <Link to="/jobregister">
-              <span className="text-3xl font-serif font-bold self-center  ">
-                Cadastrar Vaga
-              </span>
-            </Link>
-          ) : (
-            <></>
-          )}
-        </div>
       </div>
     </>
   );

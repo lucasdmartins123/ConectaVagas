@@ -4,17 +4,56 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
+import { AuthContext } from "../../components/Context/AuthContext";
 
 export default function VacancieDetails() {
   const { id } = useParams();
-  const context = useContext(CompaniesContext);
-  const { LoadVacanciesDetails, vacancieDetails } =
-    useContext(CompaniesContext);
+  const params = useParams();
+  console.log(params);
+  const {
+    LoadVacanciesDetails,
+    vacancieDetails,
+    vacancieDelete,
+    vacancyApply,
+    vacancyLoadApplications,
+    applyList,
+    vacancyQuit,
+  } = useContext(CompaniesContext);
+
+  const [isApply, setIsApply] = useState(false);
+
+  function handleAddToVacancy() {
+    if (isApply) return;
+    vacancyApply(id);
+    alert("Vaga adicionada a aplicações");
+  }
+
+  function handleQuitToVacancy() {
+    vacancyQuit(id);
+  }
+
+  useEffect(() => {
+    const apply = applyList.filter((vacancy) => vacancy.ID == id);
+    if (apply.length > 0) {
+      setIsApply(true);
+    } else {
+      setIsApply(false);
+    }
+  }, [id, applyList]);
+
+  function handleDelete() {
+    vacancieDelete(id);
+  }
 
   useEffect(() => {
     LoadVacanciesDetails(id);
   }, [id]);
 
+  useEffect(() => {
+    vacancyLoadApplications();
+  }, []);
+
+  const { userData } = useContext(AuthContext);
   return (
     <>
       <Header />
@@ -25,13 +64,53 @@ export default function VacancieDetails() {
             <h2 className=" pt-6">Descrição: {vacancieDetails.description}</h2>
             <h2 className=" pt-6">Localização: {vacancieDetails.location}</h2>
             <h2 className=" pt-6">Salario: {vacancieDetails.salary}</h2>
+            <h2 className=" pt-6">
+              Data de inicio: {vacancieDetails.postDate}
+            </h2>
+            <h2 className=" pt-6">Data de fim: {vacancieDetails.endDate}</h2>
           </div>
-          <button
-            type={"submit"}
-            className="m-10 py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
-          >
-            Aplicar
-          </button>
+          {userData.company ? (
+            <></>
+          ) : (
+            <div>
+              {isApply ? (
+                <button
+                  type="button"
+                  onClick={handleQuitToVacancy}
+                  className="m-10 py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
+                >
+                  Desistir da vaga
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleAddToVacancy}
+                  className="m-10 py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
+                >
+                  Aplicar
+                </button>
+              )}
+            </div>
+          )}
+          <div>
+            {userData.company ? (
+              <div className="flex justify-between pt-14">
+                <Link to={`/JobEdit/${vacancieDetails.ID}`}>
+                  <span className="text-lg font-serif font-bold self-center text-black-700 pr-10">
+                    Editar
+                  </span>
+                </Link>
+                <span
+                  onClick={handleDelete}
+                  className="text-lg font-serif font-bold self-center text-red-600 cursor-pointer"
+                >
+                  Deletar
+                </span>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
         </form>
       </div>
     </>

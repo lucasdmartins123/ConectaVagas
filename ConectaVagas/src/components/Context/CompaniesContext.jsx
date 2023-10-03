@@ -9,6 +9,7 @@ const CompaniesProvider = ({ children }) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [vacanciesList, setVacanciesList] = useState([]);
   const [vacancieDetails, setVacancieDetails] = useState({});
+  const [applyList, setapplyList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
   const navigate = useNavigate();
@@ -75,11 +76,62 @@ const CompaniesProvider = ({ children }) => {
     }
   }
 
-  async function vancanciesEdit(vacanciesData) {
+  async function vacanciesEdit(vacanciesData) {
     try {
       await api.put(`myvacancies`, vacanciesData, headers);
-      loadBooks();
+      loadVacancies();
       alert("Vaga atualizada");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function vacancieDelete(id) {
+    try {
+      await api.delete(`myvacancies/${id}`, headers);
+      loadVacancies();
+      alert("Vaga excluida");
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function vacancyApply(vacancieId) {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const userId = userData.id;
+    const applyData = { personID: userId, jobID: vacancieId };
+    try {
+      await api.post(`/users/applications/${userId}`, applyData, headers);
+      vacancyLoadApplications();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function vacancyLoadApplications() {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const userId = userData.id;
+    try {
+      const data = await api.get(`/users/applications/${userId}`, headers);
+      setapplyList(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function vacancyQuit(vacancieId) {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const userId = userData.id;
+    console.log(userId);
+    console.log(vacancieId);
+    try {
+      const data = await api.delete(
+        `/users/applications/${userId}/${vacancieId}`,
+        headers
+      );
+      setapplyList(data.data);
+      vacancyLoadApplications();
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +139,7 @@ const CompaniesProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      loadCompanies();
+      //loadCompanies();
       loadVacancies();
     }
   }, [userData]);
@@ -98,9 +150,14 @@ const CompaniesProvider = ({ children }) => {
         vacanciesList,
         companiesRegister,
         vacanciesRegister,
-        vancanciesEdit,
+        vacanciesEdit,
         LoadVacanciesDetails,
         vacancieDetails,
+        vacancieDelete,
+        vacancyApply,
+        vacancyLoadApplications,
+        applyList,
+        vacancyQuit,
       }}
     >
       {children}
