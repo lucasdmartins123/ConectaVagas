@@ -1,0 +1,14 @@
+{
+  "routes": [
+    { "src": "/", "dest": "/" },
+    { "src": "/login", "dest": "/" },
+    { "src": "/registerCompany", "dest": "/" },
+    { "src": "/registerPerson", "dest": "/" },
+    { "src": "/home", "dest": "/" },
+    { "src": "/jobRegister", "dest": "/" },
+    { "src": "/profile", "dest": "/" },
+    { "src": "/companiesList", "dest": "/" },
+    { "src": "/JobEdit", "dest": "/" },
+    { "src": "/vacancieDetails ", "dest": "/" }
+  ]
+}
