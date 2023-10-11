@@ -11,6 +11,8 @@ export default function Home() {
   const { companiesList, vacanciesList, applyList, vacancyLoadApplications } =
     useContext(CompaniesContext);
   const { userData } = useContext(AuthContext);
+  const { handleFilter, setEmpty, setFilter, empty, filter } =
+    useContext(CompaniesContext);
 
   /*let jobs = useMemo(() => {
     const apply = [];
@@ -57,8 +59,10 @@ export default function Home() {
         </div>
 
         <div className="pt-2 flex flex-col w-1/2 ">
-          {vacanciesList.map((vacancy, index) => (
-            <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
+          {empty === true ? (
+            <p>Nenhuma vaga dessa categoria</p>
+          ) : filter.length > 0 ? (
+            filter.map((vacancy, index) => (
               <Link to={`/vacancieDetails/${vacancy.ID}`}>
                 <div className="bg-white rounded-xl text-base font-serif font-bold px-20 ">
                   <p> Titulo: {vacancy.title}</p>
@@ -69,8 +73,23 @@ export default function Home() {
                   <p>Data de publicação: {vacancy.postDate}</p>
                 </div>
               </Link>
-            </div>
-          ))}
+            ))
+          ) : (
+            vacanciesList.map((vacancy, index) => (
+              <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
+                <Link to={`/vacancieDetails/${vacancy.ID}`}>
+                  <div className="bg-white rounded-xl text-base font-serif font-bold px-20 ">
+                    <p> Titulo: {vacancy.title}</p>
+                    <p> Descrição: {vacancy.description}</p>
+                    <p> Localização: {vacancy.location}</p>
+                    <p> Categorias: {vacancy.filters}</p>
+                    <p> Salário: {vacancy.salary}</p>
+                    <p>Data de publicação: {vacancy.postDate}</p>
+                  </div>
+                </Link>
+              </div>
+            ))
+          )}
         </div>
         <h1 className="text-3xl font-serif font-bold self-center pt-10 pb-3">
           Vagas Aplicadas:

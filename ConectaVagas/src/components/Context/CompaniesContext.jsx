@@ -176,7 +176,9 @@ const CompaniesProvider = ({ children }) => {
         vacancyQuit,
         search,
         setSearch,
+        filter,
         setFilter,
+        empty,
         setEmpty,
         handleFilter,
       }}
