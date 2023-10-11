@@ -30,6 +30,7 @@ export default function VacancieDetails() {
 
   function handleQuitToVacancy() {
     vacancyQuit(id);
+    alert("Vaga removida das aplicações");
   }
 
   useEffect(() => {
@@ -59,10 +60,11 @@ export default function VacancieDetails() {
       <Header />
       <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center">
         <form className="w-1/3 h-2/3 rounded-xl bg-white shadow-xl shadow-black	flex flex-col items-center ">
-          <div className="text-2xl font-serif font-bold text-black self-center pt-10">
+          <div className="text-2xl font-serif font-bold text-black self-center pt-20">
             <h2>Título: {vacancieDetails.title} </h2>
             <h2 className=" pt-6">Descrição: {vacancieDetails.description}</h2>
             <h2 className=" pt-6">Localização: {vacancieDetails.location}</h2>
+            <h2 className=" pt-6">Categorias: {vacancieDetails.filters}</h2>
             <h2 className=" pt-6">Salario: {vacancieDetails.salary}</h2>
             <h2 className=" pt-6">
               Data de inicio: {vacancieDetails.postDate}
@@ -95,14 +97,13 @@ export default function VacancieDetails() {
           <div>
             {userData.company ? (
               <div className="flex justify-between pt-14">
-                <Link to={`/JobEdit/${vacancieDetails.ID}`}>
-                  <span className="text-lg font-serif font-bold self-center text-black-700 pr-10">
-                    Editar
-                  </span>
-                </Link>
+                <span className="text-lg font-serif font-bold self-center text-black-700 px-5 py-5 rounded-xl bg-azul-100  text-white mx-5 ">
+                  <Link to={`/JobEdit/${vacancieDetails.ID}`}>Editar</Link>
+                </span>
+
                 <span
                   onClick={handleDelete}
-                  className="text-lg font-serif font-bold self-center text-red-600 cursor-pointer"
+                  className="text-lg font-serif font-bold self-center rounded-xl px-5 py-5  bg-red-500 text-white cursor-pointer"
                 >
                   Deletar
                 </span>

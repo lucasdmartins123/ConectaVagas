@@ -9,9 +9,12 @@ const CompaniesProvider = ({ children }) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [vacanciesList, setVacanciesList] = useState([]);
   const [vacancieDetails, setVacancieDetails] = useState({});
+  const [search, setSearch] = useState("");
   const [applyList, setapplyList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
+  const [filter, setFilter] = useState([]);
+  const [empty, setEmpty] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { userData } = useContext(AuthContext);
@@ -126,14 +129,27 @@ const CompaniesProvider = ({ children }) => {
     console.log(userId);
     console.log(vacancieId);
     try {
-      const data = await api.delete(
-        `/users/applications/${userId}/${vacancieId}`,
-        headers
-      );
-      setapplyList(data.data);
+      await api.delete(`/users/applications/${userId}/${vacancieId}`, headers);
       vacancyLoadApplications();
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function handleFilter(category) {
+    if (category === "ALL") {
+      setEmpty(false);
+      setFilter([]);
+    } else {
+      const selected = vacanciesList.filter(
+        (vacancy) => vacancy.filters === category
+      );
+      if (selected.length > 0) {
+        setEmpty(false);
+        setFilter(selected);
+      } else {
+        setEmpty(true);
+      }
     }
   }
 
@@ -158,6 +174,11 @@ const CompaniesProvider = ({ children }) => {
         vacancyLoadApplications,
         applyList,
         vacancyQuit,
+        search,
+        setSearch,
+        setFilter,
+        setEmpty,
+        handleFilter,
       }}
     >
       {children}

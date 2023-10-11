@@ -11,6 +11,7 @@ import CompaniesList from "./pages/CompaniesList/CompaniesList.jsx";
 import Profile from "./pages/Perfil/Perfil.jsx";
 import JobEdit from "./pages/JobEdit/JobEdit.jsx";
 import VacancieDetails from "./pages/VacancieDetails/VacancieDetails.jsx";
+import Search from "./pages/Search/Search.jsx";
 
 function App() {
   const { authenticated, loading } = useContext(AuthContext);
@@ -49,6 +50,10 @@ function App() {
       <Route
         path="/vacancieDetails/:id"
         element={authenticated ? <VacancieDetails /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/search"
+        element={authenticated ? <Search /> : <Navigate to="/" />}
       />
     </Routes>
   );

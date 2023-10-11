@@ -88,7 +88,7 @@ export default function JobRegister() {
                 value={location}
               ></input>
             </div>
-            <div className="flex flex-col justify-center items-center">
+            {/*<div className="flex flex-col justify-center items-center">
               <label className="pt-6 pb-3 text-xl font-serif font-bold">
                 Tags:
               </label>
@@ -104,7 +104,8 @@ export default function JobRegister() {
                 <option value="FRONTEND">Front-End</option>
                 <option value="SPRINGBOOT">Spring Boot</option>
               </select>
-            </div>
+  </div>*/}
+            <Tags setFilters={setFilters} filters={filters} />
             <div className="flex flex-col justify-center items-center">
               <label className="pt-6 pb-3 text-xl font-serif font-bold">
                 Salário:

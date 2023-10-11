@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-50 flex flex-col items-center min-h:screen">
+      <div className="bg-azul-100 opacity-50 flex flex-col items-center min-h-[calc(100vh-64px)]">
         <div className="flex flex-col pt-5">
           {userData.company ? (
             <>
@@ -56,40 +56,36 @@ export default function Home() {
           )}
         </div>
 
-        <div className="pt-2 flex flex-col ">
+        <div className="pt-2 flex flex-col w-1/2 ">
           {vacanciesList.map((vacancy, index) => (
             <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
               <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                <div className="bg-white rounded-xl text-base font-serif font-bold ">
-                  <p className="px-20"> Titulo: {vacancy.title}</p>
-                  <p className="px-20"> Descrição: {vacancy.description}</p>
-                  <p className="px-20"> Localização: {vacancy.location}</p>
-                  <p className="px-20"> Salário: {vacancy.salary}</p>
-                  <p className="px-20">
-                    {" "}
-                    Data de publicação: {vacancy.postDate}
-                  </p>
+                <div className="bg-white rounded-xl text-base font-serif font-bold px-20 ">
+                  <p> Titulo: {vacancy.title}</p>
+                  <p> Descrição: {vacancy.description}</p>
+                  <p> Localização: {vacancy.location}</p>
+                  <p> Categorias: {vacancy.filters}</p>
+                  <p> Salário: {vacancy.salary}</p>
+                  <p>Data de publicação: {vacancy.postDate}</p>
                 </div>
               </Link>
             </div>
           ))}
         </div>
-        <h1 className="text-3xl font-serif font-bold self-center pt-10">
+        <h1 className="text-3xl font-serif font-bold self-center pt-10 pb-3">
           Vagas Aplicadas:
         </h1>
-        <div className="flex flex-col gap-4">
+        <div className="pt-2 flex flex-col w-1/2 ">
           {applyList.map((vacancy, index) => (
-            <div key={index}>
+            <div className="bg-azul-100 pt-5 flex flex-col" key={index}>
               <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                <div className="bg-white rounded-xl text-base font-serif font-bold ">
-                  <p className="px-20"> Titulo: {vacancy.title}</p>
-                  <p className="px-20"> Descrição: {vacancy.description}</p>
-                  <p className="px-20"> Localização: {vacancy.location}</p>
-                  <p className="px-20"> Salário: {vacancy.salary}</p>
-                  <p className="px-20">
-                    {" "}
-                    Data de publicação: {vacancy.postDate}
-                  </p>
+                <div className="bg-white rounded-xl text-base font-serif font-bold px-20">
+                  <p> Titulo: {vacancy.title}</p>
+                  <p> Descrição: {vacancy.description}</p>
+                  <p> Localização: {vacancy.location}</p>
+                  <p> Categorias: {vacancy.filters}</p>
+                  <p> Salário: {vacancy.salary}</p>
+                  <p>Data de publicação: {vacancy.postDate}</p>
                 </div>
               </Link>
             </div>

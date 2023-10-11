@@ -4,11 +4,24 @@ import { BsFilter } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import { CompaniesContext } from "../Context/CompaniesContext";
+import Filter from "../Filter/Filter";
 
 export default function Header() {
   const { handleLogout, userData } = useContext(AuthContext);
+  const { search, setSearch, handleFilter } = useContext(CompaniesContext);
+  const [showFilters, setShowFilters] = useState(false);
+  const navigate = useNavigate();
+  function handleSearch() {
+    navigate("/search");
+  }
+
+  const handleShowFilters = () => {
+    setShowFilters(!showFilters);
+  };
+
   return (
     <div className="flex justify-between items-center px-20 py-5">
       <div>
@@ -24,13 +37,15 @@ export default function Header() {
               className: "absolute left-2 top-1/2 transform -translate-y-1/2",
             }}
           >
-            <div>
+            <div className="cursor-pointer" onClick={handleSearch}>
               <BsSearch />
             </div>
           </IconContext.Provider>
           <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className="pl-7 w-72"
-            placeholder="Insira o nome da vaga ou empresa"
+            placeholder="Insira o nome da vaga ou cidade"
           />
         </div>
 
@@ -42,9 +57,14 @@ export default function Header() {
           </div>
         </IconContext.Provider>
         <IconContext.Provider value={{ size: "1.5em" }}>
-          <div className="cursor-pointer">
-            <BsFilter />
-          </div>
+          <button className="relative">
+            <BsFilter onClick={handleShowFilters} />
+            <Filter
+              showFilters={showFilters}
+              setShowFilters={setShowFilters}
+              onClick={handleFilter}
+            />
+          </button>
         </IconContext.Provider>
         <IconContext.Provider value={{ size: "1.5em" }}>
           <div className="cursor-pointer" onClick={handleLogout}>
