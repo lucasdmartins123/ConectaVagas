@@ -50,18 +50,23 @@ export default function Login() {
             ></input>
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
-            <div className="pt-14 max-sm:pt-7">
+            <div className="pt-14 flex flex-col items-center justify-center max-sm:pt-7">
               <button
                 type={"submit"}
-                className="py-5 px-12 rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4 max-sm:ml-3"
+                className="py-5 px-12  rounded-xl bg-azul-100  text-xl font-serif font-semibold text-black uppercase hover:ring-4 max-sm:ml-3"
               >
                 Entrar
               </button>
 
               <div className="pt-2">
                 <span className="pr-1">Nao possui conta?</span>
+                <span className="pr-1">Criar Conta</span>
                 <Link className="text-azul-100 " to="/registerCompany">
-                  Criar conta
+                  Empresa
+                </Link>
+                <span className="mx-1">ou</span>
+                <Link className="text-azul-100 " to="/registerPerson">
+                  Usuario
                 </Link>
               </div>
             </div>

@@ -6,6 +6,7 @@ export default function RegisterCompany() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [user_type, setUser_type] = useState(true);
   const [cnpj, setCnpj] = useState("");
   const [city, setCity] = useState("");
@@ -15,7 +16,19 @@ export default function RegisterCompany() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password || !name || !cnpj || !city) {
-      return;
+      return alert("dados invalidos");
+    }
+    if (password !== confirmPassword) {
+      return alert("senhas diferentes");
+    }
+    if (name.length < 3) {
+      return alert("O nome deve conter 3 letras no mínimo");
+    }
+    if (cnpj.length != 14) {
+      return alert("O cpf deve conter 11 numeros");
+    }
+    if (password.length < 5) {
+      return alert("a senha deve conter no mínimo 5 caracteres");
     }
     handleRegisterCompany({ name, email, password, user_type, cnpj, city });
   }
@@ -27,14 +40,12 @@ export default function RegisterCompany() {
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
-            <h1 className="text-3xl font-serif font-bold text-black self-center pb-8 pt-5">
+            <h1 className="text-2xl font-serif font-bold text-black self-center pb-2 pt-2">
               Cadastro de Empresas
             </h1>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pb-3 pt-6 text-xl font-serif font-bold">
-              Nome:
-            </label>
+            <label className="pb-3 text-xl font-serif font-bold">Nome:</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -65,6 +76,18 @@ export default function RegisterCompany() {
               type="password"
               className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite sua senha"
+            ></input>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+              Confirme sua Senha:
+            </label>
+            <input
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              type="password"
+              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              placeholder="Digite sua senha novamente"
             ></input>
           </div>
           <div className="flex flex-col justify-center items-center">

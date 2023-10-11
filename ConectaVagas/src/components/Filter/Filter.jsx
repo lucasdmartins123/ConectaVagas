@@ -5,6 +5,8 @@ export default function Filter({
   showFilters,
   setShowFilters,
   handleFilter,
+  setFilter,
+  setEmpty,
 }) {
   const selectFilter = (filter) => {
     setFilters(filter);

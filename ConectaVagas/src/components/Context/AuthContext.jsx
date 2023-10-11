@@ -52,6 +52,7 @@ const AuthProvider = ({ children }) => {
 
   function handleLogout() {
     setAuthenticated(false);
+    alert("deslogado com sucesso");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/");

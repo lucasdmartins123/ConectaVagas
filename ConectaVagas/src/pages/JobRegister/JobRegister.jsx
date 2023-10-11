@@ -21,8 +21,22 @@ export default function JobRegister() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!title || !description || !location || !salary) {
+    if (
+      !title ||
+      !description ||
+      !location ||
+      !salary ||
+      !filters ||
+      !postDate ||
+      !endDate
+    ) {
       alert("preencha todos os campos");
+    }
+    if (salary < 0) {
+      return alert("salario nao pode ser negativo");
+    }
+    if (endDate < postDate) {
+      return alert("a data de término nao pode ser menor");
     }
 
     const newVacancie = {
