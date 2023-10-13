@@ -22,10 +22,10 @@ export default function Profile() {
         <h1 className="text-3xl font-serif font-bold self-center pt-10">
           Minhas Vagas:
         </h1>
-        <div className="pt-2 flex flex-col">
+        <div className="pt-2 grid grid-cols-2">
           {applyList.map((vacancy, index) => (
             <div
-              className="bg-azul-100 pt-5 flex flex-col justify-center items-center"
+              className="bg-azul-100 pt-5 flex flex-col justify-center items-center pr-3"
               key={index}
             >
               <div className="bg-white rounded-xl text-base font-serif font-bold w-1/2 flex flex-col px-20">

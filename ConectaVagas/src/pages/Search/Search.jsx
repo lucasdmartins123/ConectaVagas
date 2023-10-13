@@ -18,19 +18,21 @@ const Search = () => {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-50 flex flex-col items-center h-screen">
+      <div className="bg-azul-100 opacity-50 flex flex-col items-center min-h-[calc(100vh-64px)]">
         <h1 className="text-3xl font-serif font-bold self-center pt-6 pb-6">
           Essas foram as vagas encontradas:
         </h1>
-        <div className="pt-2 flex-col w-1/3">
+        <div className="pt-2 flex-col w-1/2">
           {searchResult.map((result, index) => (
             <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
               <Link to={`/vacancieDetails/${result.ID}`}>
                 <div className="bg-white rounded-xl text-base font-serif font-bold px-20 ">
-                  <p>{result.title}</p>
-                  <p>{result.description}</p>
-                  <p>{result.filters}</p>
-                  <p>{result.location}</p>
+                  <p> Titulo: {result.title}</p>
+                  <p> Descrição: {result.description}</p>
+                  <p> Localização: {result.location}</p>
+                  <p> Categorias: {result.filters}</p>
+                  <p> Salário: {result.salary}</p>
+                  <p>Data de publicação: {result.postDate}</p>
                 </div>
               </Link>
             </div>

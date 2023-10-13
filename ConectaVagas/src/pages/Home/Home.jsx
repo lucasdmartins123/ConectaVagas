@@ -1,5 +1,6 @@
 import { useState, useRef, useContext, useEffect, useMemo } from "react";
-
+import { BsCalendarDate, BsFillGeoAltFill, BsStack } from "react-icons/bs";
+import { MdOutlineAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
@@ -43,7 +44,7 @@ export default function Home() {
           {userData.company ? (
             <>
               <Link to="/jobregister">
-                <span className="text-3xl font-serif font-bold self-center  ">
+                <span className="text-3xl font-serif font-bold self-center   ">
                   Cadastrar Vaga
                 </span>
               </Link>
@@ -58,30 +59,36 @@ export default function Home() {
           )}
         </div>
 
-        <div className="pt-2 flex flex-col w-1/2 ">
+        <div className="pt-2 grid grid-cols-3">
           {empty === true ? (
             <p>Nenhuma vaga dessa categoria</p>
           ) : filter.length > 0 ? (
             filter.map((vacancy, index) => (
-              <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                <div className="bg-white rounded-xl text-base font-serif font-bold px-20 ">
-                  <p> Titulo: {vacancy.title}</p>
-                  <p> Descrição: {vacancy.description}</p>
-                  <p> Localização: {vacancy.location}</p>
-                  <p> Categorias: {vacancy.filters}</p>
-                  <p> Salário: {vacancy.salary}</p>
-                  <p>Data de publicação: {vacancy.postDate}</p>
-                </div>
-              </Link>
+              <div className="bg-azul-100 pt-5 flex flex-col pr-3" key={index}>
+                <Link to={`/vacancieDetails/${vacancy.ID}`}>
+                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-blue-600 p-3 mb-2 rounded-xl shadow-md shadow-black">
+                    {vacancy.title}
+                  </h1>
+                  <div className="bg-white rounded-xl text-base font-sans px-9 py-4 shadow-sm shadow-black ">
+                    <p> {vacancy.description}</p>
+                    <p> Cidade: {vacancy.location}</p>
+                    <p> Categorias: {vacancy.filters}</p>
+                    <p> Salário: {vacancy.salary}</p>
+                    <p>Data de publicação: {vacancy.postDate}</p>
+                  </div>
+                </Link>
+              </div>
             ))
           ) : (
             vacanciesList.map((vacancy, index) => (
-              <div className="bg-azul-100 pt-5 flex flex-col " key={index}>
+              <div className="bg-azul-100 pt-5 flex flex-col pr-3 " key={index}>
                 <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                  <div className="bg-white rounded-xl text-base font-serif font-bold px-20 ">
-                    <p> Titulo: {vacancy.title}</p>
-                    <p> Descrição: {vacancy.description}</p>
-                    <p> Localização: {vacancy.location}</p>
+                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-blue-600 p-3 mb-2 rounded-xl shadow-md shadow-black">
+                    {vacancy.title}
+                  </h1>
+                  <div className="bg-white rounded-xl text-base font-serif font-bold px-9 py-4 shadow-sm shadow-black ">
+                    <p> {vacancy.description}</p>
+                    <p> Cidade: {vacancy.location}</p>
                     <p> Categorias: {vacancy.filters}</p>
                     <p> Salário: {vacancy.salary}</p>
                     <p>Data de publicação: {vacancy.postDate}</p>
@@ -91,17 +98,23 @@ export default function Home() {
             ))
           )}
         </div>
-        <h1 className="text-3xl font-serif font-bold self-center pt-10 pb-3">
-          Vagas Aplicadas:
-        </h1>
-        <div className="pt-2 flex flex-col w-1/2 ">
+        {userData.company ? (
+          <></>
+        ) : (
+          <h1 className="text-3xl font-serif font-bold self-center pt-10 pb-3">
+            Vagas Aplicadas:
+          </h1>
+        )}
+        <div className="pt-2 grid grid-cols-3 ">
           {applyList.map((vacancy, index) => (
-            <div className="bg-azul-100 pt-5 flex flex-col" key={index}>
+            <div className="bg-azul-100 pt-5 flex flex-col pr-3" key={index}>
               <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                <div className="bg-white rounded-xl text-base font-serif font-bold px-20">
-                  <p> Titulo: {vacancy.title}</p>
-                  <p> Descrição: {vacancy.description}</p>
-                  <p> Localização: {vacancy.location}</p>
+                <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-blue-600 rounded-xl shadow-md shadow-black p-3 mb-2">
+                  {vacancy.title}
+                </h1>
+                <div className="bg-white rounded-xl text-base font-serif font-bold px-9 py-4 shadow-sm shadow-black">
+                  <p> {vacancy.description}</p>
+                  <p> Cidade: {vacancy.location}</p>
                   <p> Categorias: {vacancy.filters}</p>
                   <p> Salário: {vacancy.salary}</p>
                   <p>Data de publicação: {vacancy.postDate}</p>
