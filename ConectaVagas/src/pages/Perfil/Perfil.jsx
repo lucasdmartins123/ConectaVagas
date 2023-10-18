@@ -18,7 +18,7 @@ export default function Profile() {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-50  flex flex-col  h-screen ">
+      <div className="bg-azul-100 opacity-80  flex flex-col  h-screen ">
         <h1 className="text-3xl font-serif font-bold self-center pt-10">
           Minhas Vagas:
         </h1>

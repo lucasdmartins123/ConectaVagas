@@ -34,7 +34,7 @@ export default function RegisterCompany() {
   }
   return (
     <>
-      <div className="bg-azul-100 opacity-50 h-screen flex justify-center items-center max-sm:p-4">
+      <div className="bg-azul-100 opacity-80 h-screen flex justify-center items-center max-sm:p-4">
         <form
           className="w-1/3 h-5/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-full "
           onSubmit={handleSubmit}

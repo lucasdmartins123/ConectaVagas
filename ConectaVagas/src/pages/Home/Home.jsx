@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-50 flex flex-col items-center min-h-[calc(100vh-64px)]">
+      <div className="bg-azul-100 opacity-80 flex flex-col items-center min-h-[calc(100vh-64px)]">
         <div className="bg-gray-200 mt-6 mb-6 px-8 flex flex-col justify-center items-center shadow-md shadow-black rounded-lg">
           <div className="flex flex-col pt-5">
             {userData.company ? (

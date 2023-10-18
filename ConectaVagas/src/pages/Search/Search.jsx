@@ -18,7 +18,7 @@ const Search = () => {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-50 flex flex-col items-center min-h-[calc(100vh-64px)]">
+      <div className="bg-azul-100 opacity-80 flex flex-col items-center min-h-[calc(100vh-64px)]">
         <h1 className="text-3xl font-serif font-bold self-center pt-6 pb-6">
           Essas foram as vagas encontradas:
         </h1>
