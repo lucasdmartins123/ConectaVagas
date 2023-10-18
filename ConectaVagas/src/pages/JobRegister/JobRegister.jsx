@@ -55,7 +55,7 @@ export default function JobRegister() {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-80 h-screen flex justify-center items-center">
+      <div className="bg-azul-100  h-screen flex justify-center items-center">
         <form
           className="w-2/3 h-5/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col "
           onSubmit={handleSubmit}

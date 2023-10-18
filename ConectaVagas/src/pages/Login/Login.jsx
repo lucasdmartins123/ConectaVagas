@@ -17,7 +17,7 @@ export default function Login() {
   }
   return (
     <>
-      <div className="bg-azul-100 opacity-80 h-screen flex justify-center items-center">
+      <div className="bg-azul-100  h-screen flex justify-center items-center">
         <form
           className="w-1/3 h-1/2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-4/6"
           onSubmit={handleSubmit}

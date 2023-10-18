@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
 import { AuthContext } from "../../components/Context/AuthContext";
+import { BsCalendarDate, BsFillGeoAltFill, BsStack } from "react-icons/bs";
+import { MdOutlineAttachMoney } from "react-icons/md";
 
 export default function VacancieDetails() {
   const { id } = useParams();
@@ -66,28 +68,39 @@ export default function VacancieDetails() {
   return (
     <>
       <Header />
-      <div className="bg-azul-100 opacity-80 h-screen flex flex-col justify-center items-center">
-        <div className="bg-gray-200 p-20 flex flex-col justify-center items-center rounded-md">
-          <h2 className="pb-6 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-md shadow-md shadow-black w-full flex justify-center">
+      <div className="bg-azul-100  h-screen flex flex-col justify-center items-center">
+        <div className="bg-gray-200 p-20 flex flex-col justify-center items-center rounded-md w-5/6 h-5/6">
+          <h2 className="pb-6 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-md shadow-md shadow-black w-2/3 flex justify-center">
             {vacancieDetails.title}{" "}
           </h2>
-          <form className=" rounded-xl bg-white shadow-xl shadow-black	flex flex-col items-center px-20 pb-5 ">
+          <form className=" rounded-xl bg-white shadow-xl shadow-black	flex flex-col items-center px-8 py-8 w-2/3">
             <div className="text-2xl font-serif font-bold text-black self-center">
-              <h2 className=" pt-6">{vacancieDetails.description}</h2>
-              <h2 className=" pt-6">{vacancieDetails.location}</h2>
-              <h2 className=" pt-6"> {vacancieDetails.filters}</h2>
-              <h2 className=" pt-6">
-                {vacancieDetails.salary.toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </h2>
-              <h2 className=" pt-6">
-                Data de inicio: {formatDate(vacancieDetails.postDate)}
-              </h2>
-              <h2 className=" pt-6">
-                Data de Término: {formatDate(vacancieDetails.endDate)}
-              </h2>
+              <p className="pb-3 pt-3"> {vacancieDetails.description}</p>
+              <div className="pb-2 pt-2">
+                <BsFillGeoAltFill size={18} className="absolute" />
+                <p className="px-6">{vacancieDetails.location}</p>
+              </div>
+              <div className="pb-2 pt-2">
+                <BsStack size={18} className="absolute" />
+                <p className="px-6">{vacancieDetails.filters}</p>
+              </div>
+              <div className="pb-2 pt-2">
+                <MdOutlineAttachMoney size={20} className="absolute" />
+                <p className="px-6">
+                  {vacancieDetails.salary.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </p>
+              </div>
+              <div className="pb-2 pt-2">
+                <BsCalendarDate size={18} className="absolute" />
+                <p className="px-6">{formatDate(vacancieDetails.postDate)}</p>
+              </div>
+              <div className="pb-2 pt-2">
+                <BsCalendarDate size={18} className="absolute" />
+                <p className="px-6">{formatDate(vacancieDetails.endDate)}</p>
+              </div>
             </div>
             {userData.company ? (
               <></>
