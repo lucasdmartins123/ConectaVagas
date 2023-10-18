@@ -70,11 +70,11 @@ export default function VacancieDetails() {
       <Header />
       <div className="bg-azul-100  h-screen flex flex-col justify-center items-center">
         <div className="bg-gray-200 p-20 flex flex-col justify-center items-center rounded-md w-5/6 h-5/6">
-          <h2 className="pb-6 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-md shadow-md shadow-black w-2/3 flex justify-center">
+          <h2 className="pb-6 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-md shadow-md shadow-black w-1/2 flex justify-center">
             {vacancieDetails.title}{" "}
           </h2>
-          <form className=" rounded-xl bg-white shadow-xl shadow-black	flex flex-col items-center px-8 py-8 w-2/3">
-            <div className="text-2xl font-serif font-bold text-black self-center">
+          <form className=" rounded-xl bg-white shadow-xl shadow-black	flex flex-col  px-8 py-8 w-1/2 ">
+            <div className="text-2xl font-serif font-bold text-black">
               <p className="pb-3 pt-3"> {vacancieDetails.description}</p>
               <div className="pb-2 pt-2">
                 <BsFillGeoAltFill size={18} className="absolute" />
