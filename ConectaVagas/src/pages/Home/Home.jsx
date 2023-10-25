@@ -32,7 +32,7 @@ export default function Home() {
     <>
       <Header />
       <div className="bg-azul-100  flex flex-col items-center min-h-[calc(100vh-64px)]">
-        <div className="bg-gray-200 mt-6 mb-6 px-8 flex flex-col justify-center items-center shadow-md shadow-black rounded-lg">
+        <div className="bg-gray-200 mt-6 mb-6 px-8 flex flex-col justify-center items-center shadow-md shadow-black rounded-lg w-2/3 ">
           <div className="flex flex-col pt-5">
             {userData.company ? (
               <>

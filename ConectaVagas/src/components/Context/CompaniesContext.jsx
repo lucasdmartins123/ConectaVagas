@@ -137,6 +137,7 @@ const CompaniesProvider = ({ children }) => {
   }
 
   async function handleFilter(category) {
+    navigate("/home");
     if (category === "ALL") {
       setEmpty(false);
       setFilter([]);

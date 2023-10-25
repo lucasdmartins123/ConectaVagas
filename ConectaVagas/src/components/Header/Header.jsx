@@ -22,6 +22,13 @@ export default function Header() {
     setShowFilters(!showFilters);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      console.log("Enter foi pressionado!", text);
+      // Adicione a lógica que você deseja executar aqui
+    }
+  };
+
   return (
     <div className="flex justify-between items-center px-20 py-5">
       <div>
