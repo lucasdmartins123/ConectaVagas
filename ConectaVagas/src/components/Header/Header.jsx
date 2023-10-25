@@ -24,8 +24,7 @@ export default function Header() {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      console.log("Enter foi pressionado!", text);
-      // Adicione a lógica que você deseja executar aqui
+      handleSearch();
     }
   };
 
@@ -51,6 +50,7 @@ export default function Header() {
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={handleKeyDown}
             className="pl-7 w-80"
             placeholder="Insira o nome da vaga ou cidade"
           />
