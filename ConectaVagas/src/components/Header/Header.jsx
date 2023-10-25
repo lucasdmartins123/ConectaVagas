@@ -44,7 +44,7 @@ export default function Header() {
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-7 w-72"
+            className="pl-7 w-80"
             placeholder="Insira o nome da vaga ou cidade"
           />
         </div>

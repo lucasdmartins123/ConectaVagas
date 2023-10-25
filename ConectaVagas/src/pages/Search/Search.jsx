@@ -38,7 +38,7 @@ const Search = () => {
             {searchResult.map((result, index) => (
               <div className="pt-4 pb-4 flex flex-col pr-3" key={index}>
                 <Link to={`/vacancieDetails/${result.ID}`}>
-                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-sm shadow-md shadow-black">
+                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 p-3 mb-1 rounded-sm shadow-md shadow-black">
                     {result.title}
                   </h1>
                   <div className="bg-white rounded-sm text-base font-sans font-bold px-5 py-4 shadow-lg shadow-black">

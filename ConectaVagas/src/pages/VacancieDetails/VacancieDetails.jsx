@@ -70,10 +70,10 @@ export default function VacancieDetails() {
       <Header />
       <div className="bg-azul-100  h-screen flex flex-col justify-center items-center">
         <div className="bg-gray-200 p-20 flex flex-col justify-center items-center rounded-md w-5/6 h-5/6">
-          <h2 className="pb-6 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-md shadow-md shadow-black w-1/2 flex justify-center">
+          <h2 className="pb-6 font-sans text-white text-2xl bg-azul-100 p-3 mb-1 rounded-md shadow-md shadow-black w-1/2 flex justify-center">
             {vacancieDetails.title}{" "}
           </h2>
-          <form className=" rounded-xl bg-white shadow-xl shadow-black	flex flex-col  px-8 py-8 w-1/2 ">
+          <form className=" rounded-xl bg-white shadow-md shadow-black	flex flex-col  px-8 py-8 w-1/2 ">
             <div className="text-2xl font-serif font-bold text-black">
               <p className="pb-3 pt-3"> {vacancieDetails.description}</p>
               <div className="pb-2 pt-2">
@@ -86,26 +86,26 @@ export default function VacancieDetails() {
               </div>
               <div className="pb-2 pt-2">
                 <MdOutlineAttachMoney size={20} className="absolute" />
+                <p className="px-6">{vacancieDetails.salary}</p>
+              </div>
+              <div className="pb-2 pt-2">
+                <BsCalendarDate size={18} className="absolute" />
                 <p className="px-6">
-                  {vacancieDetails.salary.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
+                  Data de Publicação: {formatDate(vacancieDetails.postDate)}
                 </p>
               </div>
               <div className="pb-2 pt-2">
                 <BsCalendarDate size={18} className="absolute" />
-                <p className="px-6">{formatDate(vacancieDetails.postDate)}</p>
-              </div>
-              <div className="pb-2 pt-2">
-                <BsCalendarDate size={18} className="absolute" />
-                <p className="px-6">{formatDate(vacancieDetails.endDate)}</p>
+                <p className="px-6">
+                  {" "}
+                  Data de Término: {formatDate(vacancieDetails.endDate)}
+                </p>
               </div>
             </div>
             {userData.company ? (
               <></>
             ) : (
-              <div>
+              <div className="flex items-center justify-center">
                 {isApply ? (
                   <button
                     type="button"

@@ -59,10 +59,10 @@ export default function Home() {
               filter.map((vacancy, index) => (
                 <div className=" pt-4 pb-4 flex flex-col pr-3" key={index}>
                   <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                    <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-md shadow-md shadow-black">
+                    <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 p-3 mb-1 rounded-md shadow-md shadow-black">
                       {vacancy.title}
                     </h1>
-                    <div className="bg-white rounded-md text-base font-sans font-bold px-5 py-4 shadow-lg shadow-black">
+                    <div className="bg-white rounded-md text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
                       <p className="px-1 pb-2"> {vacancy.description}</p>
                       <div className="pb-2 pt-2">
                         <BsFillGeoAltFill size={18} className="absolute" />
@@ -93,10 +93,10 @@ export default function Home() {
               vacanciesList.map((vacancy, index) => (
                 <div className="pt-4 pb-4 flex flex-col pr-3 " key={index}>
                   <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                    <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-sky-500 p-3 mb-1 rounded-sm shadow-md shadow-black">
+                    <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 p-3 mb-1 rounded-sm shadow-md shadow-black">
                       {vacancy.title}
                     </h1>
-                    <div className="bg-white rounded-sm text-base font-sans font-bold px-5 py-4 shadow-lg shadow-black">
+                    <div className="bg-white rounded-sm text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
                       <p className="px-1 pb-2"> {vacancy.description}</p>
                       <div className="pb-2 pt-2">
                         <BsFillGeoAltFill size={18} className="absolute" />
@@ -136,10 +136,10 @@ export default function Home() {
             {applyList.map((vacancy, index) => (
               <div className="pt-5 pb-5  flex flex-col pr-3" key={index}>
                 <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-sky-500 rounded-md shadow-md  shadow-black p-3 mb-1">
+                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 rounded-md shadow-md  shadow-black p-3 mb-1">
                     {vacancy.title}
                   </h1>
-                  <div className="bg-white rounded-xl text-base font-sans font-bold px-5 py-4 shadow-lg shadow-black">
+                  <div className="bg-white rounded-xl text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
                     <p className="px-1 pb-2"> {vacancy.description}</p>
                     <div className="pb-2 pt-2">
                       <BsFillGeoAltFill size={18} className="absolute" />
