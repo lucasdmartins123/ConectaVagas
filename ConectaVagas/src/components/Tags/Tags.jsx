@@ -26,7 +26,7 @@ export default function Tags({ setFilters, filters }) {
           <button
             type="button"
             onClick={() => selectFilter("MYSQL")}
-            className={`w-full py-4 px-4 rounded-lg  text-sm font-serif font-semibold text-black uppercase hover:ring-4 border-2 ${
+            className={`w-full py-4 px-5 rounded-lg  text-sm font-serif font-semibold text-black uppercase hover:ring-4 border-2 ${
               filters === "MYSQL"
                 ? "bg-azul-100 border-black  "
                 : "bg-white border-azul-100 "

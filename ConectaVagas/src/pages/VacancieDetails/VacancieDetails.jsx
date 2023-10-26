@@ -68,33 +68,33 @@ export default function VacancieDetails() {
   return (
     <>
       <Header />
-      <div className="bg-azul-100  h-screen flex flex-col justify-center items-center">
-        <div className="bg-gray-200 p-20 flex flex-col justify-center items-center rounded-md w-5/6 h-5/6">
-          <h2 className="pb-6 font-sans text-white text-2xl bg-azul-100 p-3 mb-1 rounded-md shadow-md shadow-black w-1/2 flex justify-center">
+      <div className="bg-azul-100  min-h-[calc(100vh-64px)] flex flex-col justify-center items-center">
+        <div className="bg-gray-200 w-5/6 h-5/6 md:h-5/6 md:w-4/6 2xl:w-3/6 2xl:h-full p-18 sm:p-10 md:p-10 xl:p-10 2xl:p-10 flex flex-col justify-center items-center rounded-md ">
+          <h2 className="pb-2 font-sans text-white text-2xl bg-azul-100 p-2 mb-1 rounded-md shadow-md shadow-black flex justify-center w-5/6">
             {vacancieDetails.title}{" "}
           </h2>
-          <form className=" rounded-xl bg-white shadow-md shadow-black	flex flex-col  px-8 py-8 w-1/2 ">
-            <div className="text-2xl font-serif font-bold text-black">
-              <p className="pb-3 pt-3"> {vacancieDetails.description}</p>
-              <div className="pb-2 pt-2">
+          <form className=" rounded-xl bg-white shadow-md shadow-black	flex flex-col  px-6 py-2 w-5/6 h-5/6 ">
+            <div className="text-lg xl:text-2xl font-serif font-bold text-black">
+              <p className="py-2 "> {vacancieDetails.description}</p>
+              <div className="py-2 xl:py-3">
                 <BsFillGeoAltFill size={18} className="absolute" />
                 <p className="px-6">{vacancieDetails.location}</p>
               </div>
-              <div className="pb-2 pt-2">
+              <div className="py-2 xl:py-3">
                 <BsStack size={18} className="absolute" />
                 <p className="px-6">{vacancieDetails.filters}</p>
               </div>
-              <div className="pb-2 pt-2">
+              <div className="py-2 xl:py-3">
                 <MdOutlineAttachMoney size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.salary}</p>
               </div>
-              <div className="pb-2 pt-2">
+              <div className="py-2 xl:py-3">
                 <BsCalendarDate size={18} className="absolute" />
                 <p className="px-6">
                   Data de Publicação: {formatDate(vacancieDetails.postDate)}
                 </p>
               </div>
-              <div className="pb-2 pt-2">
+              <div className="py-2 xl:py-3">
                 <BsCalendarDate size={18} className="absolute" />
                 <p className="px-6">
                   {" "}
@@ -127,14 +127,14 @@ export default function VacancieDetails() {
             )}
             <div>
               {userData.company ? (
-                <div className="flex justify-between pt-14">
+                <div className="flex justify-between pt-8 md:pt-14">
                   <span className="text-lg font-serif font-bold self-center text-black-700 px-5 py-5 rounded-xl bg-azul-100  text-white mx-5 ">
                     <Link to={`/JobEdit/${vacancieDetails.ID}`}>Editar</Link>
                   </span>
 
                   <span
                     onClick={handleDelete}
-                    className="text-lg font-serif font-bold self-center rounded-xl px-5 py-5  bg-red-500 text-white cursor-pointer"
+                    className="text-lg  font-serif font-bold self-center rounded-xl px-5 py-5  bg-red-500 text-white cursor-pointer"
                   >
                     Deletar
                   </span>

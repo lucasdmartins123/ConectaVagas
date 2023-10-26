@@ -52,7 +52,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="pt-2 grid grid-cols-3 w-full ">
+          <div className="pt-2 grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-1 max-xl:grid-cols-2 w-full ">
             {empty === true ? (
               <p>Nenhuma vaga dessa categoria</p>
             ) : filter.length > 0 ? (

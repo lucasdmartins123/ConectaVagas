@@ -16,116 +16,118 @@ export default function RegisterCompany() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password || !name || !cnpj || !city) {
-      return alert("dados invalidos");
+      return alert("dados inválidos!");
     }
     if (password !== confirmPassword) {
-      return alert("senhas diferentes");
+      return alert("senhas não correspondem.");
     }
     if (name.length < 3) {
-      return alert("O nome deve conter 3 letras no mínimo");
+      return alert("O nome deve ser composto de no mínimo 3 letras!");
     }
     if (cnpj.length != 14) {
-      return alert("O cpf deve conter 11 numeros");
+      return alert("O CNPJ deve conter 14 números!");
     }
     if (password.length < 5) {
-      return alert("a senha deve conter no mínimo 5 caracteres");
+      return alert("A senha deve conter um mínimo de 5 caracteres");
     }
     handleRegisterCompany({ name, email, password, user_type, cnpj, city });
   }
   return (
     <>
-      <div className="bg-azul-100  h-screen flex justify-center items-center max-sm:p-4">
+      <div className="bg-azul-100 p-4  h-screen flex justify-center items-center">
         <form
-          className="w-1/3 h-5/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col max-sm:w-5/6 max-sm:h-full "
+          className="w-5/6 h-full  xl:w-3/6 2xl:h-5/6 md:cols-2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col  "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
-            <h1 className="text-2xl font-serif font-bold text-black self-center pb-2 pt-2">
+            <h1 className="text-xl 2xl:text-4xl font-serif font-bold text-black self-center pb-2 pt-5">
               Cadastro de Empresas
             </h1>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pb-3 text-xl font-serif font-bold">Nome:</label>
+            <label className="pb-3 text-md 2xl:text-xl 2xl:pt-2 font-serif font-bold">
+              Nome:
+            </label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              className="p-1/2 w-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite seu nome"
             ></input>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pb-3 pt-6 text-xl font-serif font-bold">
+            <label className="pb-3 pt-4 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
               Email:
             </label>
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              className="w-1/2 p-2  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite seu email"
             ></input>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
               Senha:
             </label>
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite sua senha"
             ></input>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
               Confirme sua Senha:
             </label>
             <input
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               type="password"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite sua senha novamente"
             ></input>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
               Cnpj:
             </label>
             <input
               value={cnpj}
               onChange={(e) => setCnpj(e.target.value)}
               type="text"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite seu cnpj"
             ></input>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <label className="pt-6 pb-3 text-xl font-serif font-bold">
+            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
               Cidade:
             </label>
             <input
               value={city}
               onChange={(e) => setCity(e.target.value)}
               type="text"
-              className="w-1/2 p-2 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
+              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
               placeholder="Digite a cidade"
             ></input>
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
-            <div className="pt-10">
+            <div className="pt-6 2xl:pt-10 items-center justify-center">
               <button
                 type={"submit"}
-                className="py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
+                className="py-3 px-8 2xl:py-4 2xl:px-32  rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
               >
                 Cadastrar
               </button>
-              <div className="pt-2">
-                <span className="pr-1">Ja possui conta?</span>
-                <Link className="text-azul-100" to="/login">
-                  Entra na conta
+              <div className="pt-2 flex items-center justify-center  ">
+                <span className="pr-1 2xl:text-xl">Ja possui conta?</span>
+                <Link className="text-azul-100 2xl:text-xl" to="/login">
+                  Entrar
                 </Link>
               </div>
             </div>

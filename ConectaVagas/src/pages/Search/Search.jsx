@@ -29,12 +29,12 @@ const Search = () => {
   return (
     <>
       <Header />
-      <div className="bg-azul-100  flex flex-col items-center min-h-[calc(100vh-64px)]">
+      <div className="bg-azul-100 flex flex-col items-center min-h-[calc(100vh-64px)]">
         <div className="bg-gray-200 mt-6 mb-6 px-8 flex flex-col justify-center items-center shadow-md shadow-black rounded-lg">
           <h1 className="text-3xl font-serif font-bold self-center pt-6 pb-6">
             Essas foram as vagas encontradas:
           </h1>
-          <div className="pt-2 grid grid-cols-3 w-full">
+          <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 w-full lg:grid-cols-3">
             {searchResult.map((result, index) => (
               <div className="pt-4 pb-4 flex flex-col pr-3" key={index}>
                 <Link to={`/vacancieDetails/${result.ID}`}>
