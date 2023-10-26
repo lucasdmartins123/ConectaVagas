@@ -54,7 +54,9 @@ export default function Home() {
 
           <div className="pt-2 grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-1 max-xl:grid-cols-2 w-full ">
             {empty === true ? (
-              <p>Nenhuma vaga dessa categoria</p>
+              <p className="text-3xl font-sans font-bold self-center text-black py-7">
+                Nenhuma vaga dessa categoria no momento
+              </p>
             ) : filter.length > 0 ? (
               filter.map((vacancy, index) => (
                 <div className=" pt-4 pb-4 flex flex-col pr-3" key={index}>

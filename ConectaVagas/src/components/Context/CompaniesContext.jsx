@@ -72,6 +72,7 @@ const CompaniesProvider = ({ children }) => {
       await api.post("myvacancies", vacanciesData, headers);
       loadVacancies();
       alert("Vaga adicionada");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     } finally {

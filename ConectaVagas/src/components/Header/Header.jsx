@@ -29,7 +29,7 @@ export default function Header() {
   };
 
   return (
-    <div className="flex justify-between items-center px-20 py-5">
+    <div className="flex justify-between items-center px-20 py-5 sticky top-0 bg-white z-50">
       <div>
         <div>
           <Link to="/home">ConectaVagas</Link>
