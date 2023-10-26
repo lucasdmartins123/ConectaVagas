@@ -46,7 +46,7 @@ export default function Home() {
                 </h1>
               </>
             ) : (
-              <h1 className="text-3xl font-sans font-bold self-center pt-10 text-black ">
+              <h1 className="text-3xl font-sans font-bold self-center pt-2 text-black ">
                 Oportunidades de Vagas:
               </h1>
             )}
@@ -124,48 +124,6 @@ export default function Home() {
                 </div>
               ))
             )}
-          </div>
-          {userData.company ? (
-            <></>
-          ) : (
-            <h1 className="text-3xl font-serif font-bold self-center pt-10 pb-3">
-              Vagas Aplicadas:
-            </h1>
-          )}
-          <div className="pt-2 grid grid-cols-3 w-full ">
-            {applyList.map((vacancy, index) => (
-              <div className="pt-5 pb-5  flex flex-col pr-3" key={index}>
-                <Link to={`/vacancieDetails/${vacancy.ID}`}>
-                  <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 rounded-md shadow-md  shadow-black p-3 mb-1">
-                    {vacancy.title}
-                  </h1>
-                  <div className="bg-white rounded-xl text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
-                    <p className="px-1 pb-2"> {vacancy.description}</p>
-                    <div className="pb-2 pt-2">
-                      <BsFillGeoAltFill size={18} className="absolute" />
-                      <p className="px-6">{vacancy.location}</p>
-                    </div>
-                    <div className="pb-2">
-                      <BsStack size={18} className="absolute" />
-                      <p className="px-6">{vacancy.filters}</p>
-                    </div>
-                    <div className="pb-2">
-                      <MdOutlineAttachMoney size={20} className="absolute" />
-                      <p className="px-6">
-                        {vacancy.salary.toLocaleString("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                        })}
-                      </p>
-                    </div>
-                    <div>
-                      <BsCalendarDate size={18} className="absolute" />
-                      <p className="px-6">{formatDate(vacancy.postDate)}</p>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
           </div>
         </div>
       </div>
