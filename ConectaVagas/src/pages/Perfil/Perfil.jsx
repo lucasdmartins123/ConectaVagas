@@ -10,7 +10,11 @@ import {
   AiFillLinkedin,
   AiOutlineInstagram,
 } from "react-icons/ai";
-import { MdOutlineAttachMoney, MdDriveFileRenameOutline } from "react-icons/md";
+import {
+  MdOutlineAttachMoney,
+  MdDriveFileRenameOutline,
+  MdOutlineDescription,
+} from "react-icons/md";
 import { Link } from "react-router-dom";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import { AuthContext } from "../../components/Context/AuthContext";
@@ -90,8 +94,11 @@ export default function Profile() {
                     {vacancy.title}
                   </h1>
                   <div className="bg-white rounded-xl text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
-                    <p className="px-1 pb-2"> {vacancy.description}</p>
                     <div className="pb-2 pt-2">
+                      <MdOutlineDescription size={18} className="absolute" />
+                      <p className="px-6 "> {vacancy.description}</p>
+                    </div>
+                    <div className="pb-2">
                       <BsFillGeoAltFill size={18} className="absolute" />
                       <p className="px-6">{vacancy.location}</p>
                     </div>

@@ -3,7 +3,7 @@ import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
 import { Link } from "react-router-dom";
 import { BsCalendarDate, BsFillGeoAltFill, BsStack } from "react-icons/bs";
-import { MdOutlineAttachMoney } from "react-icons/md";
+import { MdOutlineAttachMoney, MdOutlineDescription } from "react-icons/md";
 
 const Search = () => {
   const { search, vacanciesList } = useContext(CompaniesContext);
@@ -42,8 +42,11 @@ const Search = () => {
                     {result.title}
                   </h1>
                   <div className="bg-white rounded-sm text-base font-sans font-bold px-5 py-4 shadow-lg shadow-black">
-                    <p className="px-1 pb-2"> {result.description}</p>
                     <div className="pb-2 pt-2">
+                      <MdOutlineDescription size={18} className="absolute" />
+                      <p className="px-6 "> {result.description}</p>
+                    </div>
+                    <div className="pb-2">
                       <BsFillGeoAltFill size={18} className="absolute" />
                       <p className="px-6">{result.location}</p>
                     </div>

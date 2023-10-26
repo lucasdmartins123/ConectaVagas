@@ -1,6 +1,6 @@
 import { useState, useRef, useContext, useEffect, useMemo } from "react";
 import { BsCalendarDate, BsFillGeoAltFill, BsStack } from "react-icons/bs";
-import { MdOutlineAttachMoney } from "react-icons/md";
+import { MdOutlineAttachMoney, MdOutlineDescription } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
@@ -65,8 +65,11 @@ export default function Home() {
                       {vacancy.title}
                     </h1>
                     <div className="bg-white rounded-md text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
-                      <p className="px-1 pb-2"> {vacancy.description}</p>
                       <div className="pb-2 pt-2">
+                        <MdOutlineDescription size={18} className="absolute" />
+                        <p className="px-6 "> {vacancy.description}</p>
+                      </div>
+                      <div className="pb-2">
                         <BsFillGeoAltFill size={18} className="absolute" />
                         <p className="px-6">{vacancy.location}</p>
                       </div>
@@ -99,8 +102,11 @@ export default function Home() {
                       {vacancy.title}
                     </h1>
                     <div className="bg-white rounded-sm text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
-                      <p className="px-1 pb-2"> {vacancy.description}</p>
                       <div className="pb-2 pt-2">
+                        <MdOutlineDescription size={18} className="absolute" />
+                        <p className="px-6 "> {vacancy.description}</p>
+                      </div>
+                      <div className="pb-2">
                         <BsFillGeoAltFill size={18} className="absolute" />
                         <p className="px-6">{vacancy.location}</p>
                       </div>

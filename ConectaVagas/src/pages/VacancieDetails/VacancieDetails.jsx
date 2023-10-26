@@ -6,7 +6,7 @@ import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
 import { AuthContext } from "../../components/Context/AuthContext";
 import { BsCalendarDate, BsFillGeoAltFill, BsStack } from "react-icons/bs";
-import { MdOutlineAttachMoney } from "react-icons/md";
+import { MdOutlineAttachMoney, MdOutlineDescription } from "react-icons/md";
 
 export default function VacancieDetails() {
   const { id } = useParams();
@@ -75,13 +75,14 @@ export default function VacancieDetails() {
           </h2>
           <form className=" rounded-xl bg-white shadow-md shadow-black	flex flex-col  px-6 py-2 w-5/6 h-5/6 ">
             <div className="text-lg xl:text-2xl font-serif font-bold text-black">
-              <p className="py-2 "> {vacancieDetails.description}</p>
+              <MdOutlineDescription size={20} className="absolute" />
+              <p className="px-6"> {vacancieDetails.description}</p>
               <div className="py-2 xl:py-3">
-                <BsFillGeoAltFill size={18} className="absolute" />
+                <BsFillGeoAltFill size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.location}</p>
               </div>
               <div className="py-2 xl:py-3">
-                <BsStack size={18} className="absolute" />
+                <BsStack size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.filters}</p>
               </div>
               <div className="py-2 xl:py-3">
@@ -89,13 +90,13 @@ export default function VacancieDetails() {
                 <p className="px-6">{vacancieDetails.salary}</p>
               </div>
               <div className="py-2 xl:py-3">
-                <BsCalendarDate size={18} className="absolute" />
+                <BsCalendarDate size={20} className="absolute" />
                 <p className="px-6">
                   Data de Publicação: {formatDate(vacancieDetails.postDate)}
                 </p>
               </div>
               <div className="py-2 xl:py-3">
-                <BsCalendarDate size={18} className="absolute" />
+                <BsCalendarDate size={20} className="absolute" />
                 <p className="px-6">
                   {" "}
                   Data de Término: {formatDate(vacancieDetails.endDate)}
