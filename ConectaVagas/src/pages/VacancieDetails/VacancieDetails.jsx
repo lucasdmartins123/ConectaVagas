@@ -1,16 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CompaniesContext } from "../../components/Context/CompaniesContext";
 import Header from "../../components/Header/Header";
 import { AuthContext } from "../../components/Context/AuthContext";
 import { BsCalendarDate, BsFillGeoAltFill, BsStack } from "react-icons/bs";
 import { MdOutlineAttachMoney, MdOutlineDescription } from "react-icons/md";
+import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export default function VacancieDetails() {
   const { id } = useParams();
   const params = useParams();
+
   console.log(params);
   const {
     LoadVacanciesDetails,
@@ -75,8 +77,15 @@ export default function VacancieDetails() {
           </h2>
           <form className=" rounded-xl bg-white shadow-md shadow-black	flex flex-col  px-6 py-2 w-5/6 h-5/6 ">
             <div className="text-lg xl:text-2xl font-serif font-bold text-black">
-              <MdOutlineDescription size={20} className="absolute" />
-              <p className="px-6"> {vacancieDetails.description}</p>
+              <div className="flex justify-between">
+                <MdOutlineDescription size={20} className="absolute" />
+                <p className="px-6">{vacancieDetails.description}</p>
+                <div>
+                  <Link to="/home">
+                    <AiOutlineClose size={40} className="relative" />
+                  </Link>
+                </div>
+              </div>
               <div className="py-2 xl:py-3">
                 <BsFillGeoAltFill size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.location}</p>
