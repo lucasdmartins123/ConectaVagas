@@ -2,10 +2,7 @@ import React, { useContext } from "react";
 import { CompaniesContext } from "../Context/CompaniesContext";
 
 export default function Filter({ filters, showFilters }) {
-  const selectFilter = (filter) => {
-    setFilters(filter);
-  };
-  const { handleFilter, setEmpty, setFilter } = useContext(CompaniesContext);
+  const { handleFilter } = useContext(CompaniesContext);
   return (
     <div
       className={`absolute p-4 rounded-md bg-white shadow-lg -right-10 top-10 z-10 ${

@@ -6,9 +6,11 @@
     { "src": "/registerPerson", "dest": "/" },
     { "src": "/home", "dest": "/" },
     { "src": "/jobRegister", "dest": "/" },
-    { "src": "/profile", "dest": "/" },
+    { "src": "/jobEdit", "dest": "/" },
+    { "src": "/perfil", "dest": "/" },
     { "src": "/companiesList", "dest": "/" },
     { "src": "/JobEdit", "dest": "/" },
-    { "src": "/vacancieDetails ", "dest": "/" }
+    { "src": "/vacancieDetails ", "dest": "/" },
+    { "src": "/search ", "dest": "/" }
   ]
 }

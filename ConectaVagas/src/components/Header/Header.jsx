@@ -1,6 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { BsFilter } from "react-icons/bs";
+import { MdNotificationsNone } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
@@ -8,11 +9,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { CompaniesContext } from "../Context/CompaniesContext";
 import Filter from "../Filter/Filter";
+import Notification from "../Notification/Notification";
 
 export default function Header() {
   const { handleLogout, userData } = useContext(AuthContext);
-  const { search, setSearch, handleFilter } = useContext(CompaniesContext);
+  const { search, setSearch, handleFilter, handleNotification } =
+    useContext(CompaniesContext);
   const [showFilters, setShowFilters] = useState(false);
+  const [showNotification, setshowNotification] = useState(false);
   const navigate = useNavigate();
   function handleSearch() {
     navigate("/search");
@@ -20,6 +24,10 @@ export default function Header() {
 
   const handleShowFilters = () => {
     setShowFilters(!showFilters);
+  };
+
+  const handleShowNotification = () => {
+    setshowNotification(!showNotification);
   };
 
   const handleKeyDown = (event) => {
@@ -62,6 +70,16 @@ export default function Header() {
               <CgProfile />
             </Link>
           </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "1.5em", color: "black" }}>
+          <button className="relative">
+            <MdNotificationsNone onClick={handleShowNotification} />
+            <Notification
+              showNotification={showNotification}
+              setshowNotification={setshowNotification}
+              onClick={handleNotification}
+            />
+          </button>
         </IconContext.Provider>
         <IconContext.Provider value={{ size: "1.5em" }}>
           <button className="relative">
