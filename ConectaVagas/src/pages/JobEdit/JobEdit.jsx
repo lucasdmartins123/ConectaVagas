@@ -9,7 +9,7 @@ export default function JobEdit() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [filters, setFilters] = useState("");
+  const [filters, setFilters] = useState([]);
   const [salary, setSalary] = useState("");
   const [postDate, setPostDate] = useState("");
   const [endDate, setEndDate] = useState("");

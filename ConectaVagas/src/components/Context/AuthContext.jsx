@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
 
   function handleLogout() {
     setAuthenticated(false);
-    alert("deslogado com sucesso");
+    alert("Saindo da conta");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/");

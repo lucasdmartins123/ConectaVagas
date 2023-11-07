@@ -27,7 +27,7 @@ export default function Home() {
   useEffect(() => {
     vacancyLoadApplications();
   }, []);
-  console.log(applyList);
+
   return (
     <>
       <Header />

@@ -14,6 +14,52 @@ const CompaniesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
   const [filter, setFilter] = useState([]);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 2, // id recomendação
+      jobVacancy: {
+        // vaga da recomendação
+        id: 26,
+        title: "Desenvolvedor backend TESTE NOTI 14",
+        location: "Santa Maria",
+        companyName: "Pedro LTDA",
+      },
+      createdAt: "2023-11-07T00:10:43.485+00:00", // data de criação da recomendação
+    },
+    {
+      id: 3, // id recomendação
+      jobVacancy: {
+        // vaga da recomendação
+        id: 26,
+        title: "Desenvolvedor backend TESTE NOTI 14",
+        location: "Santa Maria",
+        companyName: "Pedro LTDA",
+      },
+      createdAt: "2023-11-07T00:10:43.485+00:00", // data de criação da recomendação
+    },
+  ]);
+  const [tags, setTags] = useState([
+    {
+      id: 1,
+      title: "Backend",
+    },
+    {
+      id: 2,
+      title: "Frontend",
+    },
+    {
+      id: 3,
+      title: "IA",
+    },
+    {
+      id: 4,
+      title: "Redes",
+    },
+    {
+      id: 5,
+      title: "Java",
+    },
+  ]);
   const [empty, setEmpty] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -136,16 +182,52 @@ const CompaniesProvider = ({ children }) => {
       console.log(error);
     }
   }
+  async function handleNotifications() {
+    try {
+      const notificationList = await api.get(
+        `/person/${userId}/recommendations`,
+        headers
+      );
+      setNotifications(notificationList);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleReadNotifications(notificationId) {
+    try {
+      await api.put(
+        `recommendations/person/${userId}/read/${notificationId}`,
+        headers
+      );
+      handleNotifications();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleTags() {
+    try {
+      const tagList = await api.get(`/tags/select`, headers);
+      setTags(tagList);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function handleFilter(category) {
     navigate("/home");
-    if (category === "ALL") {
+
+    if (category.length === 0) {
       setEmpty(false);
       setFilter([]);
     } else {
-      const selected = vacanciesList.filter(
-        (vacancy) => vacancy.filters === category
+      const selected = vacanciesList.filter((vacancy) =>
+        category.includes(vacancy.filters)
       );
+      console.log(vacanciesList);
+      console.log(selected);
+      console.log(category);
       if (selected.length > 0) {
         setEmpty(false);
         setFilter(selected);
@@ -161,6 +243,12 @@ const CompaniesProvider = ({ children }) => {
       loadVacancies();
     }
   }, [userData]);
+  useEffect(() => {
+    if (token) {
+      handleTags();
+      handleNotifications();
+    }
+  }, []);
   return (
     <CompaniesContext.Provider
       value={{
@@ -183,6 +271,9 @@ const CompaniesProvider = ({ children }) => {
         empty,
         setEmpty,
         handleFilter,
+        tags,
+        notifications,
+        handleReadNotifications,
       }}
     >
       {children}

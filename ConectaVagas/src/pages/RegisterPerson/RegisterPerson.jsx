@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/Context/AuthContext";
+import Tags from "../../components/Tags/Tags";
 
 export default function RegisterPerson() {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ export default function RegisterPerson() {
   const [cpf, setCpf] = useState("");
   const [surname, setSurname] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [filters, setFilters] = useState([]);
 
   const { handleRegisterPerson } = useContext(AuthContext);
 
@@ -30,13 +32,21 @@ export default function RegisterPerson() {
     if (password.length < 5) {
       return alert("a senha deve conter no mínimo 5 caracteres");
     }
-    handleRegisterPerson({ name, email, password, user_type, cpf, surname });
+    handleRegisterPerson({
+      name,
+      email,
+      password,
+      user_type,
+      cpf,
+      surname,
+      tagIds: filters,
+    });
   }
   return (
     <>
       <div className="bg-azul-100 p-6  h-screen flex justify-center items-center">
         <form
-          className="w-full h-full sm:h-5/6 md:w-4/6 md:h-5/6   xl:h-5/6 x 2xl:w-3/6 2xl:h-5/6 rounded-xl bg-white shadow-xl shadow-black	flex flex-col "
+          className="w-full h-full sm:h-5/6 md:w-4/6 md:h-5/6 xl:h-5/6 2xl:w-3/6 2xl:h-fit rounded-xl bg-white shadow-xl shadow-black	flex flex-col "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
@@ -116,6 +126,10 @@ export default function RegisterPerson() {
               className="p-1/2 w-4/6 2xl:text-xl  max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-4/6 2xl:p-1 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
               placeholder="Digite seu cpf"
             ></input>
+            <span className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+              Interesses:
+            </span>
+            <Tags setFilters={setFilters} filters={filters} />
           </div>
           <div className="pb-10 2xl:pl-2 flex flex-col items-center justify-center">
             <div className="pt-10">

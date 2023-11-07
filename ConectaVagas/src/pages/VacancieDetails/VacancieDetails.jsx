@@ -77,7 +77,7 @@ export default function VacancieDetails() {
           </h2>
           <form className=" rounded-xl bg-white shadow-md shadow-black	flex flex-col  px-6 py-2 w-5/6 h-5/6 ">
             <div className="text-lg xl:text-2xl font-serif font-bold text-black">
-              <div className="flex justify-between">
+              <div className="flex justify-between pt-5">
                 <MdOutlineDescription size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.description}</p>
                 <div>
@@ -120,7 +120,7 @@ export default function VacancieDetails() {
                   <button
                     type="button"
                     onClick={handleQuitToVacancy}
-                    className="m-10 py-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
+                    className="m-10 pb-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
                   >
                     Desistir da vaga
                   </button>
@@ -137,7 +137,7 @@ export default function VacancieDetails() {
             )}
             <div>
               {userData.company ? (
-                <div className="flex justify-between pt-8 md:pt-14">
+                <div className="flex justify-between pt-8 md:pt-5">
                   <span className="text-lg font-serif font-bold self-center text-black-700 px-5 py-5 rounded-xl bg-azul-100  text-white mx-5 ">
                     <Link to={`/JobEdit/${vacancieDetails.ID}`}>Editar</Link>
                   </span>

@@ -1,16 +1,3 @@
 {
-  "routes": [
-    { "src": "/", "dest": "/" },
-    { "src": "/login", "dest": "/" },
-    { "src": "/registerCompany", "dest": "/" },
-    { "src": "/registerPerson", "dest": "/" },
-    { "src": "/home", "dest": "/" },
-    { "src": "/jobRegister", "dest": "/" },
-    { "src": "/jobEdit", "dest": "/" },
-    { "src": "/perfil", "dest": "/" },
-    { "src": "/companiesList", "dest": "/" },
-    { "src": "/JobEdit", "dest": "/" },
-    { "src": "/vacancieDetails ", "dest": "/" },
-    { "src": "/search ", "dest": "/" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
