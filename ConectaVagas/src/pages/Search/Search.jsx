@@ -30,7 +30,7 @@ const Search = () => {
     <>
       <Header />
       <div className="bg-azul-100 flex flex-col items-center min-h-[calc(100vh-64px)]">
-        <div className="bg-gray-200 mt-6 mb-6 px-8 flex flex-col justify-center items-center shadow-md shadow-black rounded-lg">
+        <div className="bg-gray-200 mt-6 mb-6 px-8 flex flex-col justify-center items-center shadow-md shadow-black rounded-lg w-2/3 ">
           <h1 className="text-3xl font-serif font-bold self-center pt-6 pb-6">
             Essas foram as vagas encontradas:
           </h1>
@@ -50,10 +50,14 @@ const Search = () => {
                       <BsFillGeoAltFill size={18} className="absolute" />
                       <p className="px-6">{result.location}</p>
                     </div>
-                    <div className="pb-2">
-                      <BsStack size={18} className="absolute" />
-                      <p className="px-6">{result.filters}</p>
-                    </div>
+                    {result.tags.map((tag) => (
+                      <div className="pb-2">
+                        <BsStack size={18} className="absolute" />
+                        <div className="flex">
+                          <p className="px-6">{tag.title}</p>
+                        </div>
+                      </div>
+                    ))}
                     <div className="pb-2">
                       <MdOutlineAttachMoney size={20} className="absolute" />
                       <p className="px-6">

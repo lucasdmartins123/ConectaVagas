@@ -73,10 +73,14 @@ export default function Home() {
                         <BsFillGeoAltFill size={18} className="absolute" />
                         <p className="px-6">{vacancy.location}</p>
                       </div>
-                      <div className="pb-2">
-                        <BsStack size={18} className="absolute" />
-                        <p className="px-6">{vacancy.filters}</p>
-                      </div>
+                      {vacancy.tags.map((tag) => (
+                        <div className="pb-2">
+                          <BsStack size={18} className="absolute" />
+                          <div className="flex">
+                            <p className="px-6">{tag.title}</p>
+                          </div>
+                        </div>
+                      ))}
                       <div className="pb-2">
                         <MdOutlineAttachMoney size={20} className="absolute" />
                         <p className="px-6">
@@ -110,10 +114,14 @@ export default function Home() {
                         <BsFillGeoAltFill size={18} className="absolute" />
                         <p className="px-6">{vacancy.location}</p>
                       </div>
-                      <div className="pb-2">
-                        <BsStack size={18} className="absolute" />
-                        <p className="px-6">{vacancy.filters}</p>
-                      </div>
+                      {vacancy.tags.map((tag) => (
+                        <div className="pb-2">
+                          <BsStack size={18} className="absolute" />
+                          <div className="flex">
+                            <p className="px-6">{tag.title}</p>
+                          </div>
+                        </div>
+                      ))}
                       <div className="pb-2">
                         <MdOutlineAttachMoney size={20} className="absolute" />
                         <p className="px-6">

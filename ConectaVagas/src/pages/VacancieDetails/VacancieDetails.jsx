@@ -90,10 +90,14 @@ export default function VacancieDetails() {
                 <BsFillGeoAltFill size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.location}</p>
               </div>
-              <div className="py-2 xl:py-3">
-                <BsStack size={20} className="absolute" />
-                <p className="px-6">{vacancieDetails.filters}</p>
-              </div>
+              {vacancieDetails.tags.map((tag) => (
+                <div className="py-2 xl:py-3">
+                  <BsStack size={18} className="absolute" />
+                  <div className="flex">
+                    <p className="px-6">{tag.title}</p>
+                  </div>
+                </div>
+              ))}
               <div className="py-2 xl:py-3">
                 <MdOutlineAttachMoney size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.salary}</p>

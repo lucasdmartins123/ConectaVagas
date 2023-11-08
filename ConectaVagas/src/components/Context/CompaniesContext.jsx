@@ -14,52 +14,8 @@ const CompaniesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
   const [filter, setFilter] = useState([]);
-  const [notifications, setNotifications] = useState([
-    {
-      id: 2, // id recomendação
-      jobVacancy: {
-        // vaga da recomendação
-        id: 26,
-        title: "Desenvolvedor backend TESTE NOTI 14",
-        location: "Santa Maria",
-        companyName: "Pedro LTDA",
-      },
-      createdAt: "2023-11-07T00:10:43.485+00:00", // data de criação da recomendação
-    },
-    {
-      id: 3, // id recomendação
-      jobVacancy: {
-        // vaga da recomendação
-        id: 26,
-        title: "Desenvolvedor backend TESTE NOTI 14",
-        location: "Santa Maria",
-        companyName: "Pedro LTDA",
-      },
-      createdAt: "2023-11-07T00:10:43.485+00:00", // data de criação da recomendação
-    },
-  ]);
-  const [tags, setTags] = useState([
-    {
-      id: 1,
-      title: "Backend",
-    },
-    {
-      id: 2,
-      title: "Frontend",
-    },
-    {
-      id: 3,
-      title: "IA",
-    },
-    {
-      id: 4,
-      title: "Redes",
-    },
-    {
-      id: 5,
-      title: "Java",
-    },
-  ]);
+  const [notifications, setNotifications] = useState([]);
+  const [tags, setTags] = useState([]);
   const [empty, setEmpty] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -183,12 +139,15 @@ const CompaniesProvider = ({ children }) => {
     }
   }
   async function handleNotifications() {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const userId = userData.id;
     try {
       const notificationList = await api.get(
         `/person/${userId}/recommendations`,
         headers
       );
-      setNotifications(notificationList);
+      setNotifications(notificationList.data.content);
+      console.log(notificationList);
     } catch (error) {
       console.log(error);
     }
@@ -208,8 +167,8 @@ const CompaniesProvider = ({ children }) => {
 
   async function handleTags() {
     try {
-      const tagList = await api.get(`/tags/select`, headers);
-      setTags(tagList);
+      const tagList = await api.get(`/tags/select`);
+      setTags(tagList.data);
     } catch (error) {
       console.log(error);
     }
@@ -243,10 +202,15 @@ const CompaniesProvider = ({ children }) => {
       loadVacancies();
     }
   }, [userData]);
+
+  useEffect(() => {
+    handleTags();
+  }, []);
+
   useEffect(() => {
     if (token) {
-      handleTags();
       handleNotifications();
+      console.log("entrei");
     }
   }, []);
   return (
