@@ -71,7 +71,7 @@ export default function Header() {
             </Link>
           </div>
         </IconContext.Provider>
-        <IconContext.Provider value={{ size: "1.5em", color: "black" }}>
+        {/* <IconContext.Provider value={{ size: "1.5em", color: "black" }}>
           <button className="relative">
             <MdNotificationsNone onClick={handleShowNotification} />
             <Notification
@@ -80,7 +80,7 @@ export default function Header() {
               onClick={handleNotification}
             />
           </button>
-        </IconContext.Provider>
+        </IconContext.Provider> */}
         <IconContext.Provider value={{ size: "1.5em" }}>
           <button className="relative">
             <BsFilter onClick={handleShowFilters} />

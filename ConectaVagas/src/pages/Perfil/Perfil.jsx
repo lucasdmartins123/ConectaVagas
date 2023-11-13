@@ -32,14 +32,6 @@ export default function Profile() {
     return formatedDate;
   };
 
-  const selecionarArquivo = (evento) => {
-    if (evento.target.files?.length) {
-      setImagem(evento.target.files[0]);
-    } else {
-      setImagem(null);
-    }
-  };
-
   useEffect(() => {
     vacancyLoadApplications();
   }, []);
@@ -53,9 +45,6 @@ export default function Profile() {
             Meu Perfil
           </h1>
           <div className="pt-5 flex self-start">
-            <div className="px-20 self-end">
-              <input type="file" onChange={selecionarArquivo}></input>
-            </div>
             <div className="text-xl font-sans font-normal self-center text-black">
               <div>
                 <MdDriveFileRenameOutline size={20} className="absolute" />
@@ -67,15 +56,21 @@ export default function Profile() {
               </div>
               <div>
                 <AiFillLinkedin size={20} className="absolute" />
-                <h3 className="px-6">Linkedin: </h3>
+                <h3 className="px-6">Linkedin: {userData?.linkedin}</h3>
               </div>
-              <div>
+              {/* <div>
                 <AiOutlineInstagram size={20} className="absolute" />
                 <h3 className="px-6">Instagram: </h3>
-              </div>
+              </div> */}
               <div>
                 <BsGithub size={20} className="absolute" />
-                <h3 className="px-6">GitHub: </h3>
+                <h3 className="px-6">GitHub:{userData?.github} </h3>
+                <a
+                  href={`https://github.com/${userData?.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                ></a>
               </div>
             </div>
           </div>

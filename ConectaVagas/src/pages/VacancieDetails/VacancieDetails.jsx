@@ -54,9 +54,9 @@ export default function VacancieDetails() {
     LoadVacanciesDetails(id);
   }, [id]);
 
-  useEffect(() => {
-    vacancyLoadApplications();
-  }, []);
+  // useEffect(() => {
+  //   vacancyLoadApplications();
+  // }, []);
 
   const { userData } = useContext(AuthContext);
   const formatDate = (date) => {
@@ -67,6 +67,7 @@ export default function VacancieDetails() {
 
     return formatedDate;
   };
+
   return (
     <>
       <Header />
@@ -90,14 +91,15 @@ export default function VacancieDetails() {
                 <BsFillGeoAltFill size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.location}</p>
               </div>
-              {vacancieDetails.tags.map((tag) => (
+              {/* {vacancieDetails.tags.map((tag) => (
                 <div className="py-2 xl:py-3">
                   <BsStack size={18} className="absolute" />
                   <div className="flex">
                     <p className="px-6">{tag.title}</p>
                   </div>
                 </div>
-              ))}
+              ))} */}
+
               <div className="py-2 xl:py-3">
                 <MdOutlineAttachMoney size={20} className="absolute" />
                 <p className="px-6">{vacancieDetails.salary}</p>
@@ -124,7 +126,7 @@ export default function VacancieDetails() {
                   <button
                     type="button"
                     onClick={handleQuitToVacancy}
-                    className="m-10 pb-5 px-12 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
+                    className="m-10 py-5 px-14 rounded-xl bg-azul-100 text-xl font-serif font-semibold text-black uppercase hover:ring-4 "
                   >
                     Desistir da vaga
                   </button>

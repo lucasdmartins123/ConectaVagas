@@ -10,6 +10,8 @@ export default function RegisterCompany() {
   const [user_type, setUser_type] = useState(true);
   const [cnpj, setCnpj] = useState("");
   const [city, setCity] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [github, setGithub] = useState("");
 
   const { handleRegisterCompany } = useContext(AuthContext);
 
@@ -36,7 +38,7 @@ export default function RegisterCompany() {
     <>
       <div className="bg-azul-100 p-4  h-screen flex justify-center items-center">
         <form
-          className="w-5/6 h-full  xl:w-3/6 2xl:h-5/6 md:cols-2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col  "
+          className="w-5/6 h-full  xl:w-3/6 2xl:h-fit md:cols-2 rounded-xl bg-white shadow-xl shadow-black	flex flex-col  "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col">
@@ -44,77 +46,109 @@ export default function RegisterCompany() {
               Cadastro de Empresas
             </h1>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pb-3 text-md 2xl:text-xl 2xl:pt-2 font-serif font-bold">
-              Nome:
-            </label>
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              className="p-1/2 w-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
-              placeholder="Digite seu nome"
-            ></input>
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Nome:
+              </label>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite seu nome"
+              ></input>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Email:
+              </label>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite seu email"
+              ></input>
+            </div>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pb-3 pt-4 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
-              Email:
-            </label>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
-              placeholder="Digite seu email"
-            ></input>
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Senha:
+              </label>
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite sua senha"
+              ></input>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Confirme sua Senha:
+              </label>
+              <input
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                type="password"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite sua senha novamente"
+              ></input>
+            </div>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
-              Senha:
-            </label>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
-              placeholder="Digite sua senha"
-            ></input>
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Cnpj:
+              </label>
+              <input
+                value={cnpj}
+                onChange={(e) => setCnpj(e.target.value)}
+                type="text"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite seu cnpj"
+              ></input>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Cidade:
+              </label>
+              <input
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                type="text"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite a cidade"
+              ></input>
+            </div>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
-              Confirme sua Senha:
-            </label>
-            <input
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              type="password"
-              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
-              placeholder="Digite sua senha novamente"
-            ></input>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
-              Cnpj:
-            </label>
-            <input
-              value={cnpj}
-              onChange={(e) => setCnpj(e.target.value)}
-              type="text"
-              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
-              placeholder="Digite seu cnpj"
-            ></input>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <label className="pt-4 pb-3 text-md 2xl:text-xl 2xl:pt-4 font-serif font-bold">
-              Cidade:
-            </label>
-            <input
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              type="text"
-              className="w-1/2 p-1/2 2xl:p-1 2xl:w-4/6 shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4 max-sm:w-5/6"
-              placeholder="Digite a cidade"
-            ></input>
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Linkedin:
+              </label>
+              <input
+                value={linkedin}
+                onChange={(e) => setLinkedin(e.target.value)}
+                type="text"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite seu linkedin"
+              ></input>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
+                Github:
+              </label>
+              <input
+                value={github}
+                onChange={(e) => setGithub(e.target.value)}
+                type="text"
+                className="p-1/2 w-4/6 2xl:text-xl max-md:w-3/6 xl:w-3/6 2xl:p-1/2 2xl:w-5/6 2xl:p-1  shadow-md shadow-black border rounded-md ring-2 ring-azul-100 hover:ring-4"
+                placeholder="Digite a github"
+              ></input>
+            </div>
           </div>
           <div className="pb-10 flex flex-col items-center justify-center">
             <div className="pt-6 2xl:pt-10 items-center justify-center">
