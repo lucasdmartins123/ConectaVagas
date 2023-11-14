@@ -21,7 +21,8 @@ import { AuthContext } from "../../components/Context/AuthContext";
 import Header from "../../components/Header/Header";
 
 export default function Profile() {
-  const { applyList, vacancyLoadApplications } = useContext(CompaniesContext);
+  const { applyList, vacancyLoadApplications, socialMediaList } =
+    useContext(CompaniesContext);
   const { userData } = useContext(AuthContext);
   const [imagem, setImagem] = useState(null);
 
@@ -54,24 +55,48 @@ export default function Profile() {
                 <AiOutlineMail size={20} className="absolute" />
                 <h3 className="px-6">Email: {userData?.email}</h3>
               </div>
-              <div>
-                <AiFillLinkedin size={20} className="absolute" />
-                <h3 className="px-6">Linkedin: {userData?.linkedin}</h3>
-              </div>
-              {/* <div>
+              {socialMediaList.map((socialMedia) => (
+                <div>
+                  <div>
+                    {userData.company ? (
+                      <></>
+                    ) : (
+                      <Link
+                        to={`/linkedin/${socialMedia.linkedin}`}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <div>
+                          <FaLinkedin size={20} className="absolute" />
+                          <h3 className="px-6">
+                            LinkedIn: {socialMedia.linkedin}
+                          </h3>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  {/* <div>
                 <AiOutlineInstagram size={20} className="absolute" />
                 <h3 className="px-6">Instagram: </h3>
               </div> */}
-              <div>
-                <BsGithub size={20} className="absolute" />
-                <h3 className="px-6">GitHub:{userData?.github} </h3>
-                <a
-                  href={`https://github.com/${userData?.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                ></a>
-              </div>
+                  <div>
+                    {userData.company ? (
+                      <></>
+                    ) : (
+                      <Link
+                        to={`https://github.com/${socialMedia?.github}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <div>
+                          <BsGithub size={20} className="absolute" />
+                          <h3 className="px-6">GitHub: {socialMedia.github}</h3>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           {userData.company ? (

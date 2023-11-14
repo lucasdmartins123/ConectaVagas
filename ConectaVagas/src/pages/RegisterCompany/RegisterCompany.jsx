@@ -124,7 +124,7 @@ export default function RegisterCompany() {
               ></input>
             </div>
           </div>
-          <div className="grid grid-cols-2">
+          {/* <div className="grid grid-cols-2">
             <div className="flex flex-col justify-center items-center">
               <label className="pb-1 pt-3 text-md 2xl:text-2xl 2xl:pt-4 font-serif font-bold">
                 Linkedin:
@@ -149,7 +149,7 @@ export default function RegisterCompany() {
                 placeholder="Digite a github"
               ></input>
             </div>
-          </div>
+          </div> */}
           <div className="pb-10 flex flex-col items-center justify-center">
             <div className="pt-6 2xl:pt-10 items-center justify-center">
               <button

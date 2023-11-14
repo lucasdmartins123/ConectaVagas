@@ -15,6 +15,7 @@ const CompaniesProvider = ({ children }) => {
   const [dbLoading, setDbLoading] = useState(false);
   const [filter, setFilter] = useState([]);
   const [notifications, setNotifications] = useState([]);
+  const [socialMediaList, setSocialMediaList] = useState([]);
   const [tags, setTags] = useState([]);
   const [empty, setEmpty] = useState(false);
   const navigate = useNavigate();
@@ -146,20 +147,8 @@ const CompaniesProvider = ({ children }) => {
         `/person/${userId}/recommendations`,
         headers
       );
-      setNotifications(notificationList.data.content);
+      setNotifications(notificationList.data);
       console.log(notificationList);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function handleReadNotifications(notificationId) {
-    try {
-      await api.put(
-        `recommendations/person/${userId}/read/${notificationId}`,
-        headers
-      );
-      handleNotifications();
     } catch (error) {
       console.log(error);
     }
@@ -174,27 +163,48 @@ const CompaniesProvider = ({ children }) => {
     }
   }
 
-  async function handleFilter(category) {
-    navigate("/home");
-
-    if (category.length === 0) {
-      setEmpty(false);
-      setFilter([]);
-    } else {
-      const selected = vacanciesList.filter((vacancy) =>
-        category.includes(vacancy.filters)
+  async function handleSocialMedias() {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const userId = userData.id;
+    try {
+      const socialMediaList = await api.get(
+        `/person/${userId}/contact`,
+        headers
       );
-      console.log(vacanciesList);
-      console.log(selected);
-      console.log(category);
-      if (selected.length > 0) {
-        setEmpty(false);
-        setFilter(selected);
-      } else {
-        setEmpty(true);
-      }
+      setSocialMediaList(socialMediaList.data.content);
+      console.log(socialMediaList);
+    } catch (error) {
+      console.log(error);
     }
   }
+
+  async function handleFilter() {
+    navigate("/home");
+    try {
+      const filterList = await api.get(`/tags/${tag.title}`, headers);
+      setFilter(filterList.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  // async function handleFilter(tag) {
+  //   navigate("/home");
+  //   if (tag.length === 0) {
+  //     setEmpty(false);
+  //     setFilter([]);
+  //   } else {
+  //     const selected = vacanciesList.filter((vacancy) =>
+  //       category.includes(vacancy.filters)
+  //     );
+
+  //     if (selected.length > 0) {
+  //       setEmpty(false);
+  //       setFilter(selected);
+  //     } else {
+  //       setEmpty(true);
+  //     }
+  //   }
+  // }
 
   useEffect(() => {
     if (token) {
@@ -238,6 +248,8 @@ const CompaniesProvider = ({ children }) => {
         tags,
         notifications,
         handleReadNotifications,
+        handleSocialMedias,
+        socialMediaList,
       }}
     >
       {children}

@@ -151,33 +151,33 @@ export default function Home() {
             Oportunidade de Vagas:
           </h1>
           <div className="pt-2 grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-1 max-xl:grid-cols-2 w-full ">
-            {vacanciesList.map((vacancy, index) => (
+            {notifications.map((notification, index) => (
               <div className="pt-5 pb-5  flex flex-col pr-3" key={index}>
-                <Link to={`/vacancieDetails/${vacancy.ID}`}>
+                <Link to={`/vacancieDetails/${notification.ID}`}>
                   <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 rounded-md shadow-md  shadow-black p-3 mb-1">
-                    {vacancy.title}
+                    {notification.title}
                   </h1>
                   <div className="bg-white rounded-xl text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
                     <div className="pb-2 pt-2">
                       <MdOutlineDescription size={18} className="absolute" />
-                      <p className="px-6 "> {vacancy.description}</p>
+                      <p className="px-6 "> {notification.description}</p>
                     </div>
                     <div className="pb-2">
                       <BsFillGeoAltFill size={18} className="absolute" />
-                      <p className="px-6">{vacancy.location}</p>
+                      <p className="px-6">{notification.location}</p>
                     </div>
-                    {vacancy.tags.map((tag) => (
+                    {notification.tags.map((tag) => (
                       <div className="pb-2">
                         <BsStack size={18} className="absolute" />
                         <div className="flex">
-                          <p className="px-6">{tag.title}</p>
+                          <p className="px-6">{notification.title}</p>
                         </div>
                       </div>
                     ))}
                     <div className="pb-2">
                       <MdOutlineAttachMoney size={20} className="absolute" />
                       <p className="px-6">
-                        {vacancy.salary.toLocaleString("pt-BR", {
+                        {notification.salary.toLocaleString("pt-BR", {
                           style: "currency",
                           currency: "BRL",
                         })}
@@ -185,7 +185,9 @@ export default function Home() {
                     </div>
                     <div>
                       <BsCalendarDate size={18} className="absolute" />
-                      <p className="px-6">{formatDate(vacancy.postDate)}</p>
+                      <p className="px-6">
+                        {formatDate(notification.postDate)}
+                      </p>
                     </div>
                   </div>
                 </Link>

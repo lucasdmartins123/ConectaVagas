@@ -42,6 +42,8 @@ export default function RegisterPerson() {
       cpf,
       surname,
       tagIds: filters,
+      github,
+      linkedin,
     });
   }
   return (
