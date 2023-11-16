@@ -2,26 +2,7 @@ import React, { useContext, useState } from "react";
 import { CompaniesContext } from "../Context/CompaniesContext";
 
 export default function Filter({ filters, showFilters }) {
-  const { handleFilter, tags } = useContext(CompaniesContext);
-  const [filtersList, setFiltersList] = useState([]);
-
-  const selectFilter = (filter) => {
-    if (filter === "ALL") {
-      setFiltersList([]);
-      handleFilter([]);
-      return;
-    }
-    const verify = filtersList.find((id) => id === filter);
-    if (verify) {
-      const remove = filtersList.filter((id) => id !== filter);
-      setFiltersList(remove);
-      handleFilter(remove);
-    } else {
-      const add = [...filtersList, filter];
-      setFiltersList(add);
-      handleFilter(add);
-    }
-  };
+  const { handleFilter, tags, setFilter } = useContext(CompaniesContext);
 
   return (
     <div
@@ -33,7 +14,7 @@ export default function Filter({ filters, showFilters }) {
         <li>
           <button
             type="button"
-            onClick={() => selectFilter("ALL")}
+            onClick={() => setFilter(null)}
             className={`w-full py-2 px-2 rounded-lg  text-sm font-serif font-semibold text-black uppercase hover:ring-2 hover:bg-azul-100 border-2 ${
               filters === "ALL"
                 ? "bg-azul-100 border-black  "
@@ -47,7 +28,7 @@ export default function Filter({ filters, showFilters }) {
           <li key={tag.id}>
             <button
               type="button"
-              onClick={() => selectFilter(tag.title)}
+              onClick={() => setFilter(tag.id)}
               className={`w-full py-2 px-2 rounded-lg  text-sm font-serif font-semibold text-black uppercase hover:ring-2 hover:bg-azul-100 border-2 ${
                 filters?.includes(tag.id)
                   ? "bg-azul-100 border-black  "

@@ -13,11 +13,12 @@ const CompaniesProvider = ({ children }) => {
   const [applyList, setapplyList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState(null);
   const [notifications, setNotifications] = useState([]);
-  const [socialMediaList, setSocialMediaList] = useState([]);
+  const [socialMediaList, setSocialMediaList] = useState(null);
   const [tags, setTags] = useState([]);
   const [empty, setEmpty] = useState(false);
+  const [limitPage, setLimitPage] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { userData } = useContext(AuthContext);
@@ -38,7 +39,10 @@ const CompaniesProvider = ({ children }) => {
 
   async function loadVacancies() {
     try {
-      const { data } = await api.get("/myvacancies", headers);
+      const { data } = await api.get(
+        `/myvacancies${filter ? `?tagIds=${filter}` : ""}`,
+        headers
+      );
       setVacanciesList(data.content);
     } catch (error) {
       console.log(error);
@@ -147,7 +151,8 @@ const CompaniesProvider = ({ children }) => {
         `/person/${userId}/recommendations`,
         headers
       );
-      setNotifications(notificationList.data);
+      setNotifications(notificationList.data.content);
+      //setLimitPage(notificationList.pageable)
       console.log(notificationList);
     } catch (error) {
       console.log(error);
@@ -167,51 +172,20 @@ const CompaniesProvider = ({ children }) => {
     const userData = JSON.parse(localStorage.getItem("user"));
     const userId = userData.id;
     try {
-      const socialMediaList = await api.get(
-        `/person/${userId}/contact`,
-        headers
-      );
-      setSocialMediaList(socialMediaList.data.content);
-      console.log(socialMediaList);
+      const MediaList = await api.get(`/person/${userId}/contact`, headers);
+      setSocialMediaList(MediaList.data);
+      console.log(MediaList);
     } catch (error) {
       console.log(error);
     }
   }
-
-  async function handleFilter() {
-    navigate("/home");
-    try {
-      const filterList = await api.get(`/tags/${tag.title}`, headers);
-      setFilter(filterList.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  // async function handleFilter(tag) {
-  //   navigate("/home");
-  //   if (tag.length === 0) {
-  //     setEmpty(false);
-  //     setFilter([]);
-  //   } else {
-  //     const selected = vacanciesList.filter((vacancy) =>
-  //       category.includes(vacancy.filters)
-  //     );
-
-  //     if (selected.length > 0) {
-  //       setEmpty(false);
-  //       setFilter(selected);
-  //     } else {
-  //       setEmpty(true);
-  //     }
-  //   }
-  // }
 
   useEffect(() => {
     if (token) {
       //loadCompanies();
       loadVacancies();
     }
-  }, [userData]);
+  }, [userData, filter]);
 
   useEffect(() => {
     handleTags();
@@ -220,6 +194,7 @@ const CompaniesProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       handleNotifications();
+      handleSocialMedias();
       console.log("entrei");
     }
   }, []);
@@ -244,12 +219,11 @@ const CompaniesProvider = ({ children }) => {
         setFilter,
         empty,
         setEmpty,
-        handleFilter,
         tags,
         notifications,
-        handleReadNotifications,
         handleSocialMedias,
         socialMediaList,
+        limitPage,
       }}
     >
       {children}

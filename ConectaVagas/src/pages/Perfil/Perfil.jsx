@@ -5,6 +5,7 @@ import {
   BsStack,
   BsGithub,
 } from "react-icons/bs";
+import { FaLinkedin } from "react-icons/fa";
 import {
   AiOutlineMail,
   AiFillLinkedin,
@@ -21,7 +22,7 @@ import { AuthContext } from "../../components/Context/AuthContext";
 import Header from "../../components/Header/Header";
 
 export default function Profile() {
-  const { applyList, vacancyLoadApplications, socialMediaList } =
+  const { applyList, vacancyLoadApplications, socialMediaList, vacanciesList } =
     useContext(CompaniesContext);
   const { userData } = useContext(AuthContext);
   const [imagem, setImagem] = useState(null);
@@ -37,6 +38,7 @@ export default function Profile() {
     vacancyLoadApplications();
   }, []);
   console.log(applyList);
+  console.log(socialMediaList);
   return (
     <>
       <Header />
@@ -55,52 +57,105 @@ export default function Profile() {
                 <AiOutlineMail size={20} className="absolute" />
                 <h3 className="px-6">Email: {userData?.email}</h3>
               </div>
-              {socialMediaList.map((socialMedia) => (
+
+              <div>
                 <div>
-                  <div>
-                    {userData.company ? (
-                      <></>
-                    ) : (
-                      <Link
-                        to={`/linkedin/${socialMedia.linkedin}`}
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        <div>
-                          <FaLinkedin size={20} className="absolute" />
-                          <h3 className="px-6">
-                            LinkedIn: {socialMedia.linkedin}
-                          </h3>
-                        </div>
-                      </Link>
-                    )}
-                  </div>
-                  {/* <div>
+                  {userData.company ? (
+                    <></>
+                  ) : (
+                    <Link
+                      to={`https://www.linkedin.com/in/${socialMediaList?.linkedin}`}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <div>
+                        <FaLinkedin size={20} className="absolute" />
+                        <h3 className="px-6">
+                          Linkedin: {socialMediaList?.linkedin}
+                        </h3>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+                {/* <div>
                 <AiOutlineInstagram size={20} className="absolute" />
                 <h3 className="px-6">Instagram: </h3>
               </div> */}
-                  <div>
-                    {userData.company ? (
-                      <></>
-                    ) : (
-                      <Link
-                        to={`https://github.com/${socialMedia?.github}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        <div>
-                          <BsGithub size={20} className="absolute" />
-                          <h3 className="px-6">GitHub: {socialMedia.github}</h3>
-                        </div>
-                      </Link>
-                    )}
-                  </div>
+                <div>
+                  {userData.company ? (
+                    <></>
+                  ) : (
+                    <Link
+                      to={`https://github.com/${socialMediaList?.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <div>
+                        <BsGithub size={20} className="absolute" />
+                        <h3 className="px-6">
+                          GitHub: {socialMediaList?.github}
+                        </h3>
+                      </div>
+                    </Link>
+                  )}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
           {userData.company ? (
-            <></>
+            <>
+              <h1 className="text-3xl font-sans font-bold self-center pt-10 pb-3">
+                Vagas Criadas:
+              </h1>
+              <div className="pt-2 grid grid-cols-4 w-full ">
+                {vacanciesList.map((vacancy, index) => (
+                  <div className="pt-5 pb-5  flex flex-col pr-3" key={index}>
+                    <Link to={`/vacancieDetails/${vacancy.ID}`}>
+                      <h1 className="flex justify-center pb-2 font-sans text-white text-xl bg-azul-100 rounded-md shadow-md  shadow-black p-3 mb-1">
+                        {vacancy.title}
+                      </h1>
+                      <div className="bg-white rounded-xl text-base font-sans font-bold px-5 py-4 shadow-md shadow-black">
+                        <div className="pb-2 pt-2">
+                          <MdOutlineDescription
+                            size={18}
+                            className="absolute"
+                          />
+                          <p className="px-6 "> {vacancy.description}</p>
+                        </div>
+                        <div className="pb-2">
+                          <BsFillGeoAltFill size={18} className="absolute" />
+                          <p className="px-6">{vacancy.location}</p>
+                        </div>
+                        {vacancy.tags.map((tag) => (
+                          <div className="pb-2">
+                            <BsStack size={18} className="absolute" />
+                            <div className="flex">
+                              <p className="px-6">{tag.title}</p>
+                            </div>
+                          </div>
+                        ))}
+                        <div className="pb-2">
+                          <MdOutlineAttachMoney
+                            size={20}
+                            className="absolute"
+                          />
+                          <p className="px-6">
+                            {vacancy.salary.toLocaleString("pt-BR", {
+                              style: "currency",
+                              currency: "BRL",
+                            })}
+                          </p>
+                        </div>
+                        <div>
+                          <BsCalendarDate size={18} className="absolute" />
+                          <p className="px-6">{formatDate(vacancy.postDate)}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </>
           ) : (
             <h1 className="text-3xl font-sans font-bold self-center pt-10 pb-3">
               Vagas Aplicadas:
