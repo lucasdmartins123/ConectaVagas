@@ -184,6 +184,8 @@ const CompaniesProvider = ({ children }) => {
     if (token) {
       //loadCompanies();
       loadVacancies();
+      handleNotifications();
+      handleSocialMedias();
     }
   }, [userData, filter]);
 
@@ -193,8 +195,6 @@ const CompaniesProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      handleNotifications();
-      handleSocialMedias();
       console.log("entrei");
     }
   }, []);
