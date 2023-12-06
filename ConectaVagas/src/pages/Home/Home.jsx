@@ -76,7 +76,7 @@ export default function Home() {
                       <div className="pb-2">
                         <BsStack size={18} className="absolute" />
                         <div className="flex">
-                          <p className="px-6">{notification.title}</p>
+                          <p className="px-6">{tag.title}</p>
                         </div>
                       </div>
                     ))}
