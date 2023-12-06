@@ -65,6 +65,8 @@ export default function Profile() {
                   ) : (
                     <Link
                       to={`https://www.linkedin.com/in/${socialMediaList?.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       <div>
