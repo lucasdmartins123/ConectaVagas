@@ -104,6 +104,11 @@ export default function Profile() {
           </div>
           {userData.company ? (
             <>
+              <Link to="/jobregister">
+                <span className="text-3xl font-sans font-bold text-black  ">
+                  Cadastrar Vaga
+                </span>
+              </Link>
               <h1 className="text-3xl font-sans font-bold self-center pt-10 pb-3">
                 Vagas Criadas:
               </h1>

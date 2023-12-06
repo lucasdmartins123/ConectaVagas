@@ -45,11 +45,6 @@ export default function Home() {
           <div className="flex flex-col pt-5">
             {userData.company ? (
               <>
-                <Link to="/jobregister">
-                  <span className="text-3xl font-sans font-bold self-center text-black  ">
-                    Cadastrar Vaga
-                  </span>
-                </Link>
                 <h1 className="text-3xl font-sans font-bold self-center pt-5 text-black ">
                   Vagas Criadas:
                 </h1>
